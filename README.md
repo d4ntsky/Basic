@@ -1,2 +1,2 @@
-# bitBit
+# Bit
 학원
