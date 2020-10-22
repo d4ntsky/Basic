@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<!--  웹에서 외부 파일을 불러와서 써보는  -->
+
+<p id="demo"></p>
+
+<script type="text/javascript">
+let xhttp = new XMLHttpRequest();
+
+xhttp.onreadystatechange = function () {
+	
+	if(this.readyState == 4 && this.status == 200) {
+		nodeValueFunc(this);
+	}
+}
+xhttp.open("GET", "http://openapi.seoul.go.kr:8088/sample/xml/SebcBusStopEng/1/5/", this);
+xhttp.send();
+
+function nodeValueFunc( xml ) {
+//	alert('nodeValueFunc() 호출');	//외부 파일 읽어오는 지 확인!!
+	
+	let arr, txt, xmlDoc;
+	txt = "";
+	
+	xmlDoc = xml.responseXML;
+	
+	arr = xmlDoc.getElementsByTagName("NAME_ENG");
+	
+	for (i = 0; i < arr.length; i++) {
+		txt += arr[i].childNodes[0].nodeValue + "<br>";
+	}
+	
+	document.getElementById("demo").innerHTML = txt;
+}
+</script>
+
+</body>
+</html>

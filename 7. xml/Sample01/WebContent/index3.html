@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- customer.xml 불러오기 -->
+
+<p id="demo"></p>
+
+<script type="text/javascript">
+
+let xhttp = new XMLHttpRequest();
+
+xhttp.onreadystatechange = function () {
+	
+	if(this.readyState == 4 && this.status == 200) {
+		
+		//function별 기능이 다름
+		nodeValFunc(this); //함수를 넣어서 처리하는
+//		nodeNameFunc(this);//#text가 나오는 빈 칸이 나왔기 때문
+//		childNodeFunc(this);
+	}
+}
+xhttp.open("GET", 'customer.xml', true);
+xhttp.send();
+
+function nodeValFunc(xml) {
+	
+	let num, name;
+	let txt, numtxt, xmlDoc; //결과물 모아줄 변수
+	
+	txt = numtxt = "";
+	
+	xmlDoc = xml.responseXML;
+	console.log(xmlDoc); //object
+	
+	num = xmlDoc.getElementsByTagName("번호");
+	name = xmlDoc.getElementsByTagName("이름");
+	console.log(num.length);
+	
+	for (i = 0; i < num.length; i++) {
+		txt += num[i].childNodes[0].nodeValue + "<br>";
+		numtxt += name[i].childNodes[0].nodeValue + "<br>";
+	}
+	document.getElementById("demo").innerHTML = txt + numtxt;
+	
+}
+
+function nodeNameFunc( xml ) {
+	let arr, xmlDoc, txt;
+	txt = "";
+	
+	//파싱해서 가져오는 부분
+	xmlDoc = xml.responseXML;
+	
+	arr = xmlDoc.documentElement.childNodes;
+	
+	for (i = 0; i < arr.length; i++) {
+		if(arr[i].nodeType == 1) {	//빈 공간 없이 #text 지우기 위한..
+			txt += arr[i].nodeName + "<br>";
+		}
+	}
+	
+	document.getElementById("demo").innerHTML = txt;
+}
+
+function childNodeFunc( xml ) {
+	let arr, xmlDoc, txt;
+	txt = "";
+	
+	xmlDoc = xml.responseXML;
+	
+	arr = xmlDoc.getElementsByTagName("고객")[0];
+	let len = arr.childNodes.length; //길이값 확인
+	console.log(len);
+	
+	let fchild = arr.firstChild;	//1번 홍길동이 넘어오는 
+	
+	for (i = 0; i < len; i++) {
+		if(fchild.nodeType == 1) {
+			txt += i + " " + fchild.nodeName + "<br>";
+		}
+		fchild = fchild.nextSibling;//다음 태그로 넘겨주는 1번 > 홍길동 >
+	}
+	document.getElementById("demo").innerHTML = txt; //데이터를 웹페이지에 올려주는
+}
+</script>
+
+</body>
+</html>

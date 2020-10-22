@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+</head>
+<body>
+
+<h1>Room Image</h1>
+
+<img alt="" src="./image/b_pic2.jpg" id="pic">
+
+<script type="text/javascript">
+$(function () {
+	
+	$("#pic").hover(	//mouseover and mouseout
+			function () {	
+				$(this).attr("src","./image/b_pic1.jpg");
+			},
+			function () {
+				$(this).attr("src","./image/b_pic2.jpg");
+			}
+	);
+	
+	
+	/*
+	let num = 0;
+	$("#pic").click(function() {
+		if(num == 0) {
+			$(this).attr("src","./image/b_pic1.jpg");
+			num = 1;
+		}else{
+			$(this).attr("src","./image/b_pic2.jpg");
+			num = 0;
+		}	
+	});
+	*/
+	
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+
+<ul id="list">
+	<li>커피</li>
+	<li>홍차</li>
+	<li>우유</li>
+	<li>주스</li>
+	<li>녹차</li>
+</ul>
+
+<p id="len">list의 element수(리스트의 요소의 수)</p>
+선택한 항목 : <input type="text" id="choice">
+
+<br><hr><br>
+
+추가항목:<input type="text" id="col"><br>
+<button type="button" id="btn">음료 종류 추가</button> 
+
+<script type="text/javascript">
+$(function () {
+	
+//click한 항목
+	/*
+	$("ul#list").click(function() {
+		alert('click'); //list 통쨰 아무거나 클릭했을 때
+	});
+	*/
+	
+	/*
+	//list에 하나하나의 항목
+	$("ul#list li").click(function() {
+		$("#choice").val( $(this).text() ); 
+	}); 
+	//== 자식....
+	$("ul#list").children().click(function() {
+		$("#choice").val( $(this).text() ); 
+	});
+	*/
+	$(document).on("click", "#list li", function() {
+		$("#choice").val( $(this).text() ); 
+	});
+	
+//색깔 넣기 - 두개 비교
+	/*
+	$("ul#list").children().mouseover(function() {
+		//alert('test');
+		$(this).css('background-color', "salmon");
+	});
+	$("ul#list li").mouseout(function() {
+		$(this).css('background-color', '#ffffff');
+	});
+	*/
+	$(document).on("mouseover","ul#list li", function() {
+		//alert('test');
+		$(this).css('background-color', "salmon");
+	});
+	$(document).on("mouseout","#list li", function() {
+		$(this).css('background-color', '#ffffff');
+	});
+	
+	//-------------------------------------------------------
+	
+	$("#btn").click(function() {
+		/*
+		let len = $("ul#list").children().length;
+		$("#len").text(len + "개의 element가 있습니다");
+		*/
+		let len = $("ul#list").children().length;
+		$("#len").text(len + 1 + "개의 element가 있습니다"); //+1 확인
+		
+		//추가항목
+		let appendObj = $("<li></li>").text( $("#col").val() );
+		$("#list").append(appendObj);
+		
+	});
+});
+</script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+0617
+	datas
+	sFunc
+0618
+	select1		
+	work1		sql1/scott문제0
+	select2
+	work2		sql2/scott문제1
+0619
+	select3
+	select4
+	work3		sql3/scott문제2,3		
+0622
+	work3		끝
+	work4		sql4/scott문제4
+0623
+	select5
+	select6
+	work5		sql5/scott문제5 해볼거	--ROWNUM RANK OVER 
+0624 
+	work5		끝 
+	table
+0625    
+	table1		데이터 무결성
+	sequence
+	index
+	work6		sql6,7
+0626    
+	view
+	work7		sql8
+	PL1		
+0629
+	PL2
+	PL3
+	PL4
+	PLwork		-과제에 트리거가 없음
+0630
+	PLwork		-끝
+
+	jdbc로 이클립스로 돌아감	
+
+	
+	https://ko.wikipedia.org/wiki/PL/SQL
+
+0702	
+	https://loy124.tistory.com/24
+	
+
+	제출 - 블랙잭/
+	java알고리즘 - 월요일까지
+	알고리즘 그림과 분류 알고리즘의 설명/ 알고리즘 예시 설명
+	종류 중 트리 제일 많이 나오고, 2진트리 프로그래밍 이런거 골라서
+	안 겹치는 거 묻기
+	기술면접에서 알고리즘을 묻는게 공부했는지
+	인적성검사 - 문제풀이
+exerd - 나중에 필요함
+eXERD 무료 검색
+팀프로젝트
+https://m.blog.naver.com/PostView.nhn?blogId=centrople&logNo=221031349915&proxyReferer=https:%2F%2Fwww.google.com%2F
+
+https://ok4u.tistory.com/65
+https://pjh3749.tistory.com/162
+
+기능별 모음 요약 만들기
+다시확인
+https://www.acmicpc.net/problem/tags 분류중
+사례연구 부분은 
+유튜브에
+java 기술면접 공부 
+java 알고리즘 강의
+하나만 잡아서 공유해보기
+내야되는 거 날짜 이번 주내로 하나씩
+
+0624
+db 3일뒤 끝
+jdbc도 하나 내야됨
+
+통합구현 포트폴리오 
+
+sql활용 - 필기 시험
+데이터베이스 구현 query문 작성
+
+화면 설계 오라클 + awt
+ui 구현 만들기
+디지털 컨퍼런스
+
+
+참고)
+jobkorea를 봤을시 웹프로그램 종류가 다양
+시스템프로그래머 SE - 사고처리반
+데이터베이스 쪽은 가기 힘들
+서버보안 쪽은 하드웨어로 대체 - 모니터링/쓰레드만 확인
+.NET은 C#
+
+확인)
+devkorea.co.kr
+https://tragramming.tistory.com/74
+cheatsheetsql
+http://blog.naver.com/PostView.nhn?blogId=1stwook&logNo=30187788514&parentCategoryNo=&categoryNo=12&viewDate=&isShowPopularPosts=true&from=search 
+https://coding-factory.tistory.com/114
+https://programmers.co.kr/ 
+https://yeogue.tistory.com/259
+https://librewiki.net/wiki/%EC%8B%9C%EB%A6%AC%EC%A6%88:%EC%88%98%ED%95%99%EC%9D%B8%EB%93%AF_%EA%B3%BC%ED%95%99%EC%95%84%EB%8B%8C_%EA%B3%B5%ED%95%99%EA%B0%99%EC%9D%80_%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B3%BC%ED%95%99/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98_%EA%B8%B0%EC%B4%88
+https://codeup.kr/
+https://hyeon424.tistory.com/entry/Java-%EC%9E%90%EB%B0%94%EB%A1%9C-%ED%91%BC-CodeUp-%EA%B8%B0%EC%B4%88-100%EC%A0%9C
+급)
+https://d-e-v.tistory.com/3
+

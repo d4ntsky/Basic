@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h3 id="h3demo">h3 tag id = h3demo</h3>
+<br>
+
+<p id="pdemo">p tag id = pdemo</p>
+<br>
+
+입력 : <input type="text" id="inputdemo" value="">
+<br><br>
+
+<button type="button" onclick="btnclick()">클릭</button>
+
+<script type="text/javascript">
+
+function btnclick() {
+//	let str = document.getElementById('h3demo').innerHTML;	//값을 받는 getter
+//	document.getElementById('pdemo').innerHTML = str;		//값을 넣는 setter
+	
+	let str = document.getElementById('inputdemo').value;	//앞에 innerHTML 뒤에 vaule랑 확인  
+	document.getElementById('pdemo').innerHTML = str;
+	
+	alert(document.getElementById('inputdemo').value = parseInt( str ) + 2) ; 
+														//문자열 str
+}
+	
+</script>
+
+</body>
+</html>

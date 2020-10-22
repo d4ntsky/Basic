@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+
+<h1>수영 시합</h1>
+
+<button type="button" id="woman">여성부</button>
+<button type="button" id="man">남성부</button>
+<br><br>
+
+<table border="1" id="result">
+	<tr>
+		<th>title</th>
+		<th>name</th>
+		<th>time</th>
+	</tr>
+	<tr>						<!-- tr:eq(1) 1번지 -->
+		<th>우승</th>				<!-- td:eq(0) 0번지 -->
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<th>2위</th>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<th>3위</th>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+
+<script type="text/javascript">
+let woman = [
+	["",""],
+	["성춘향", "01:06:12"],
+	["황진이", "01:07:08"],
+	["사임당", "01:09:99"]
+];
+
+let man = [
+	["",""],
+	["이순신", "01:08:92"],
+	["홍길동", "01:10:18"],
+	["강감찬", "01:13:49"]
+];
+
+$(function () {
+//	$("tr:eq(1) td:eq(1)").html("데이터"); //테이블 내에 위치 확인 예시
+
+	$("#woman").click(function() {
+		for(i = 0; i < 4; i++) {
+			for (j = 0; j < 2; j++) {
+				$("tr:eq(" + i + ") td:eq("+ j +")").html(woman[i][j]);
+			}
+		}
+	});
+	
+	$("#man").click(function() {
+		for(i = 0; i < 4; i++) {
+			for (j = 0; j < 2; j++) {
+				$("tr:eq(" + i + ") td:eq("+ j +")").text(man[i][j]);
+			}
+		}
+	});
+	
+});
+</script>
+
+</body>
+</html>

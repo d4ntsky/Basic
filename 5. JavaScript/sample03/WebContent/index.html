@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 
+	Access Attribute(속성
+	id		:	1개	-> value
+	class	:	다수	-> CSS
+	name	:	다수	-> value
+ -->
+ 
+ <p id="pid">p tag id = pid</p>
+ <br>
+ 
+ <p class="pclass">p tag class = pclass</p>
+ <br>
+ 
+ <h3 class="pclass">h3 tag class = pclass</h3>
+ <br>
+ 
+ <p name="pname">p tag name  = pname</p>
+ <br>
+ 
+ <button type="button" onclick="func()">button</button>
+ <br>
+ <input type="text" id="str" name="str">
+ 
+ <script type="text/javascript">
+ function func() {
+	//id
+//	let text = document.getElementById('pid').innerHTML;
+//	document.getElementById("str").value = text;
+	
+	//class
+//	let text = document.getElementsByClassName('pclass')[1].innerHTML; //같은 class는 [배열로 구분]
+//	alert(text); //undefined
+//	document.getElementById("str").value = text;
+
+	//name
+	let text = document.getElementsByName("pname")[0].innerHTML;
+	document.getElementById("str").value = text;
+}
+ </script>
+</body>
+</html>

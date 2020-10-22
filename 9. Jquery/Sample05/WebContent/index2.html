@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+</head>
+<body>
+
+<h3>JQuery</h3>
+
+이름: <input type="text" id="name"><br>
+나이: <input type="text" id="age"><br>
+주소: <input type="text" id="address"><br>
+<button type="button" id="btn">전송</button>
+
+<script type="text/javascript">
+$(function () {
+	
+	$('#btn').click(function() {
+		//검사 
+		location.href = "NewFile1.jsp?name=" + $("#name").val() +
+									"&age=" + $("#age").val() +
+									"&address=" + $("#address").val();
+	});
+});
+</script>
+<!-- --------------------------------------------------------------- -->
+<br><hr><br>
+
+<!-- form으로 묶임 -->
+<form id="frm" action="NewFile1.jsp"> <!-- action="NewFile1.jsp" 행선지 -->
+	이름: <input type="text" name="name"><br>
+	나이: <input type="text" name="age"><br>
+	주소: <input type="text" name="address"><br>
+	
+	<button type="button" id="send">전송(form)</button>
+	<!-- <input type="submit"> 을 누를 때만 전송이 가능!! -->
+</form>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	$("#send").click(function() {
+		//빈칸 체크
+	//	alert('send');
+	//	$('#frm').attr("action", "NewFile1.jsp").submit();	//setter	//action이 없는 경우
+		$('#frm').submit();												//action이 있는 경우
+	});
+});
+</script>
+
+</body>
+</html>

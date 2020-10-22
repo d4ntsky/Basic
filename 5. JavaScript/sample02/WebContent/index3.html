@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+10진수 : 128
+<br>
+
+<button type="button" onclick="func()">변환</button>
+
+<script type="text/javascript">
+
+function func() {
+	let num = 128;
+	
+	// 10진수 -> 2, 8, 16진수 변환
+	let result = num.toString(2);	// 2진수 변환
+//  let result = num.toString(8);
+//	let result = num.toString(16);
+
+	alert(result);
+}
+
+//입력 받은 다음 2, 8, 16진수로 다변환
+</script> 
+
+</body>
+</html>

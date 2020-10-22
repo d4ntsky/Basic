@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+</head>
+<body>
+<!-- 
+	Link
+	
+		HTML
+			<a href=""			: 짐이 없이 이동 
+			<form action=""		: 짐을 갖고 이동 가능
+				cf) attribute는 항상 붙이기
+				cf) 서버에서 데이터를 가져와서 뷰에서 뿌려주는 것을 못하는데
+						 짐 푸는 역활을 Ajax해서 가능하게 할 수 있다!!!!!
+		Java Script
+ 			location.href = 	: 짐을 갖고 이동 가능
+ 											짐 == parameter
+ -->
+
+<!-- --------------------------------------------------------------------- -->
+
+	<!-- <form action="NewFile.jsp"> --> 	
+
+ 		ID : <input type="text" name="id" id="_id" placeholder="id입력">
+ 								<!-- 실무에서 id _ 언더바로 구별 -->
+ 								<!-- placeholder -->	
+ 								<!-- name이 넘어감 -->
+		<br>			
+
+<!-- HTML --> 
+		<input type="submit" value="HTML">	<!-- submit은 form 하나 당 하나 -->
+	
+<!-- Java Script -->
+		<button type="button" onclick="btnFunc()">JScript</button>
+
+<!-- JQuery -->
+		<button type="button" id="btn">JQuery</button>
+		
+	<!-- </form> --> 
+
+<script type="text/javascript">
+//HTML
+	//빈 칸으로도 접속이 될 수 있다. 검사 기능이 없으므로
+															 //form없이는 돌아가지 않음
+//JavaScript
+	function btnFunc() {
+		let id = document.getElementById("_id").value;
+		location.href = "NewFile.jsp?id=" + id;				 //form이 없어도 돌아가지만 .. 김
+	}
+	
+//JQuery
+	$('#btn').click(function() {
+	//	alert('btn click');
+		location.href = "NewFile.jsp?id=" + $('#_id').val(); //form이 없어도 돌아감!!!!
+	});
+</script>
+
+
+<!-- --------------------------------------------------------------------- -->
+
+</body>
+</html>

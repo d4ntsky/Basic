@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- form 
+	resource : text field, button, text area, Check box, radio button
+-->
+
+<!-- 
+	Attribute
+		목적 : 접근하기 위한 요소(element)
+			id		: 현재 페이지에서 1개만 적용된다.			Java Script
+			class	: 다중으로 사용이 가능하다. 디자인적 요소		CSS, Java Script	
+			name	: 값을 (Server에) 전달. 1개만 사용		Java Script
+ ex)
+<p id = "aaa" class="ddd" name="a1">hello</p>
+<p id = "bbb" class="ddd" name="b1">hello</p>
+<p id = "ccc" class="ddd" name="c1">hello</p>
+ -->
+
+<a href="NewFile.jsp">NewFile로 이동</a>	<!-- 링크 이용 -->
+<br>
+
+<form action="NewFile.jsp">
+ID: 	  	<input type="text" name="id" value="" title="여기에 아이디 기입"> 
+<br>
+
+Password:	<input type="password" name="pwd" value="비밀 번호 ">
+<br>
+
+<input type="submit" value="버튼">	<!-- 리소스 이용 -->
+<br>
+
+<input type="reset" value="초기화">
+</form>
+ <br><br><br>
+ 
+ <!-- HTML5 부터 나온 기능 -->
+ <form action="NewFile2.jsp">
+ number: 	<input type="number" name="num" max="5" min="1">
+ <br>
+ 
+ date:		<input type="date" name="today">
+ <br>
+ 
+ color:		<input type="color" value="#ffff00" name="Choice color">
+ <br>
+ 
+ range:		<input type="range" max="10" min="0" name="LikeNum">
+ <br>
+ 
+ search:	<input type="search" name="srch">
+ 
+ <input type="submit" value="버튼">
+ </form>
+ 
+ 
+ 
+ <br><br><br>
+ 
+ Check Box & Radio Button<br>
+ <form action="NewFile1.jsp">
+ 	<input type="checkbox" name="hobby" value="패션">패션<br>
+ 	<input type="checkbox" name="hobby" value="음악">음악<br>
+ 	<input type="checkbox" name="hobby" value="게임">게임<br>
+	<br>
+	<input type="radio" name="car" value="현대">현대<br>
+ 	<input type="radio" name="car" value="대우">대우<br>
+ 	<input type="radio" name="car" value="쌍용" checked="checked">쌍용<br>
+	<br>
+	<input type="submit" value="취미">
+</form>
+
+ <br> <br> <br>
+ 
+Select == Choice == ComboBox<br>
+<form action="NewFile3.jsp">
+<select name = "fname" multiple="multiple">
+	<option value="사과">Apple</option>
+	<option value="배">Pear</option>
+	<option value="망고" selected="selected">Mango</option>
+	<option value="바나나">Banana</option>
+</select>
+<input type="submit" value="과일">
+</form>
+ 
+ <br>
+ 
+ <textarea rows="10" cols="30">초기값</textarea>
+ 
+ <br><br>
+ 
+ <video width="400" controls="controls">
+ 	<source src="mov_bbb.mp4" type="video/mp4">
+ <!-- 	<source src="mov_bbb.ogg" type="video/ogg"> -->
+ </video>
+</body>
+</html>

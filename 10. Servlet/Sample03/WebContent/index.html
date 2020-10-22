@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- 
+	Server + Applet = Servlet
+	
+	Web(html/ Client) < - >  Java(String, Object/ Server < - > DB Server
+	
+	Web Browser				Web Applictation Server(WAS)
+	
+				http://x.x.x.x:8090/project명/index.html
+				request
+	Client		-------- >	Web Server, Web Container < -- > DB
+											Servlet
+											JSP
+											resource
+											
+										web.xml(Web Server가 동작했을시에 setting & initialize)
+												1.
+				response(응답)					2. 세팅을 위한 목적	
+				< --------
+
+	Server 동작 방식
+	Get, Post
+
+
+
+	Client에 필요한 언어들(WB)
+	HTML JavaScript CSS JQuery (Ajax)
+	cf)ajaw는 이쪽 저쪽다?
+		url : www.~.com 
+	클라이언트에서 리퀘스트(요청)해서 
+	was 중 웹서버에 들어간다.(웹서버의 thread는 계속돌고있다)
+	was의 다른 하나인 웹컨테이너(servlet과 jsp + resource(이미지 같은거))
+	웹컨테이너는 디비에 정보를 갖고 오고
+	웹컨테이너는 같은 WAS에 웹서버에 던져주고
+	클라이언트에 리스폰스(응답)해서 뿌려준다.
+
+	서블릿과 JSP의 큰 차이?
+	서블릿은
+		JAVA
+	JSP는
+		HTML
+
+	WAS(Web Application Server)
+
+	DB
+
+	MVC model 1 서블릿 사용 안 한다.
+	MVC model 2 서블릿을 사용한다.
+
+	웹서버는 여러개 사용가능하다.
+ -->
+<h1>Servlet</h1>
+
+<form action="location" method="get">
+	<input type="text" name="name">
+	<input type="submit" value="get 방식">
+</form>
+
+<form action="location" method="post">
+	<input type="text" name="name">
+	<input type="submit" value="post 방식">
+</form>
+
+<script type="text/javascript">
+/*	method value 값
+ 	default값은 get
+ */
+</script>
+
+</body>
+</html>

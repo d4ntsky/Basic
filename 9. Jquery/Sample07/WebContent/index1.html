@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+</head>
+<body>
+<!-- ---------------------------------------------------------------------------------- -->
+
+<button type="button" id="prepend">추가(앞)</button>
+<button type="button" id="append">추가(뒤)</button>
+<br><hr><br>
+
+<p>글로벌 양대 테크 기업인 구글과 애플이 동시에 한 나라에 집중하고 있다. 바로 인도다. 대형 시장으로 부상하는 인도에 최근 두 기업은 막대한 자금을 쏟아붓기로 결정했다.</p>
+<p>구글은 13일(현지시간) 온라인 이벤트 '구글 포 인디아 2020(Google for India 2020)'을 열어 인도에 약 100억 달러를 투자하겠다고 밝혔다. 우리나라 돈으로 약 12조 원에 달하는 금액이다.</p>
+<br><hr><br>
+
+<ol>
+	<li>사과</li>
+	<li>참외</li>
+	<li>포도</li>
+</ol>
+<br><hr><br>
+
+<select id="food">
+	<option value="피자">피자</option>
+	<option value="치킨">치킨</option>
+	<option value="김밥">김밥</option>
+</select>
+
+<!-- ---------------------------------------------------------------------------------- -->
+<script type="text/javascript">
+$(function () {
+	
+	$("#prepend").click(function() {	// 내용 앞 추가
+		$("p").prepend("<br>prepend 추가 요소(element)입니다<br>");
+		$("ol").prepend("<li>망고</li>");
+		$("#food").prepend("<option value='라면'>라면</option>");
+	});
+	
+	$("#append").click(function() {		// 내용 뒤 추가
+		$("p").append("<br>append 추가 요소(element)입니다<br>");
+		$("ol").append("<li>딸기</li>");
+		$("#food").append("<option value='보쌈'>보쌈</option>");
+	});
+	
+	
+});
+</script>
+</body>
+</html>

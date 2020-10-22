@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+
+<div id="news">로딩중...</div>
+
+<script type="text/javascript">
+
+//파일 입출력
+$(document).ready(function() {
+	
+	$("#news").load("index.txt", function (txt, status) {	//매개변수 부분 안적어도 된다.
+		
+//		alert(txt);
+		alert(status);
+
+	});
+	
+});
+</script>
+
+</body>
+</html>

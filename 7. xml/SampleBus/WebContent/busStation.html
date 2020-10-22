@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!--  "BUS_STA_NM":"역명"/"STND_BSST_ID":"표준버스정류장ID"/"BSST_ARS_NO":"버스정류장ARS번호"/"WORK_DT":"등록일자" -->
+
+<div id="station">
+</div>
+
+<script type="text/javascript">
+	//google에서 "서울 버스 노선 json" 이라고 검색
+
+let xhttp = new XMLHttpRequest();
+
+xhttp.onreadystatechange = function () {
+	if(this.readyState == 4 && this.status == 200){
+		jsonFunc(this);
+	}
+}
+xhttp.open("GET","bus402_1.json",true);
+xhttp.send();
+
+function jsonFunc( resp ) {
+	//
+	let jsonDoc = resp.responseText;
+	let arr = JSON.parse(jsonDoc);
+	//제목과 자료 받기
+	let title = arr.DESCRIPTION;	// 키 값의 명칭을 저장
+	let datas = arr.DATA;			// value 값을 저장
+	//테이블로	
+	let out = "<table border='1'>";
+	//out += "<col width='100'><col width='100'><col width='100'><col width='100'>";
+	
+	// 컬럼으로 생성
+	out += "<tr>";
+	out += "<th>번호</th>";
+	out += "<th>" + title.BUS_STA_NM + "</th>";		/* 키값은 대소문자를 구분하므로 주의!! */
+	out += "<th>" + title.STND_BSST_ID + "</th>";
+	out += "<th>" + title.BSST_ARS_NO + "</th>";
+	out += "<th>" + title.WORK_DT + "</th>";
+	out += "</tr>";
+	//-----------------------
+	for (i = 0; i < 10; i++) {	/* 열개만 데이터 가져오기	*/
+		out += "<tr>";
+	
+		out += "<th>"+(i+1)+"</th>";
+		out += "<td>" + datas[i].bus_sta_nm +"</td>";
+		out += "<td>" + datas[i].stnd_bsst_id +"</td>";
+		out += "<td>" + datas[i].bsst_ars_no +"</td>";
+		out += "<td>" + datas[i].work_dt +"</td>";
+	
+		out += "</tr>";
+	}
+	
+	
+	out += "</table>";
+	document.getElementById("station").innerHTML = out;
+}
+
+</script>
+
+</body>
+</html>

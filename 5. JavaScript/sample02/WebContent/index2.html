@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<p id="demo"></p>
+
+<h3 id="h3">서울특별시 강남구 일원동에 있는 지하철역이다. 서울지하철 3호선 대청역과 수서역 사이에 있다. 1993년 10월 30일 개업했다. </h3>
+
+<script type="text/javascript">
+let str = document.getElementById("h3").innerHTML;
+
+let pos = str.indexOf("역");
+	pos = str.search("휘발유");
+	pos = str. slice(4, 9); // 4번지부터 9번지 저나지 
+	pos = str.substring(4, 9);
+	
+	str1 = 'hello';
+	str2 = 'heello';
+	str2 = str + 'o'
+	
+	alert(str2);
+	
+document.getElementById("demo").innerHTML;
+
+	if(str1 == str2){
+		alert('같은 문자열입니다');
+	}
+	
+	str = 'aa,bb,cc,,dd';
+	let arrStr = str.split(',');
+	alert(arrStr[2]);
+</script>
+;</body>
+</html>

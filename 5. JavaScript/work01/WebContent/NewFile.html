@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<img alt="image/tahiti/tahiti01.jpg" src="image/tahiti/tahiti01.jpg" id="tahi" onclick="alert('타히티의 사진입니다!')">
+<br><hr><br>
+
+<h3>문제</h3>
+<input type="text" id="ques" size="100" value="한국에서 제일 높은 산은?">
+<br>
+<button type="button" id="prob" onclick="qfunc()">정답</button>
+<br><hr><br>
+
+<h3>변수의 연산</h3>
+<pre>
+a=10, b=4 에 대해서
+변수 'a' 와 'b' 의 계산 결과를 표시한다.</pre>
+<button type="button" onclick="calculfunc(1)">덧셈</button>
+<button type="button" onclick="calculfunc(2)">뺄셈</button>
+<button type="button" onclick="calculfunc(3)">곱셈</button>
+<button type="button" onclick="calculfunc(4)">나눗셈</button>
+<button type="button" onclick="calculfunc(5)">나머지</button>
+<br><hr><br>
+
+<h2>체육관 이용 요금</h2>
+<p>기본 사용료 (2면, 4시간) 40800원</p>
+<!--
+<input type="checkbox" id="addm1" value="20000" onclick="total1()">야간 조명 (20000원)<br>
+<input type="checkbox" id="addm2" onchange="total2()">배구 네트 x 2면 (4000원)<br>
+<input type="checkbox" id="addm3" onchange="total3()">배구 x 10개 (5000원)<br>
+<p>합계 금액 <input type="text" id="total" value="40800"> 원형</p>
+-->
+
+<form name="frm">
+<input type="checkbox" id="ch1"  onclick="sum(0)" value="20000">야간 조명 (20000원)<br>
+<input type="checkbox" id="ch2"  onclick="sum(1)" value="4000" >배구 네트 x 2면 (4000원)<br>
+<input type="checkbox" id="ch3"  onclick="sum(2)" value="5000" >배구 x 10개 (5000원)<br>
+<p>합계 금액 <input type="text" id="t1" value="40800"> 원형</p>
+</form>
+
+<h2>안녕히 가십시오</h2>
+
+<script type="text/javascript">
+/***********************************************************************************************************************/
+let total = parseInt (document.getElementById('t1').value);	//글로벌 변수
+
+let arr = new Array(3);
+
+for(i=0; i<arr.length; i++){
+	arr[i] = parseInt(document.getElementById('ch' + (i+1)).value);
+}	/*==
+arr[0] = parseInt(document.getElementById('ch1').value);
+arr[1] = parseInt(document.getElementById('ch2').value);
+arr[2] = parseInt(document.getElementById('ch3').value);
+alert(arr[0]);
+alert(arr[1]);
+alert(arr[2]);														*/
+function sum(num) {
+	/*
+	alert(document.frm.elements[3].value);
+	alert(document.frm.elements[0].checked);
+	*/
+	if( document.frm.elements[num].checked == true ){
+		total = total + arr[num];
+	}else{
+		total = total - arr[num];
+	}
+	document.frm.elements[3].value = total;
+	
+	//접근법
+	let obj = document.getElementsByTagName("body")[0];
+	//alert(obj.getElementsByTagName("h2")[1].innerHTML);
+	
+	obj.getElementsByTagName("h2")[1].innerHTML = '추가 감사합니다';//체크박스 시 감사합니다
+}
+
+//미완성!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//----------------------------------------------------
+/*
+function total1(){
+	let chogi  = document.getElementById("total").value;
+	//alert(chogi);
+	let duhae  = document.getElementById("addm1").value;
+	//alert(duhae);
+	let result = parseInt(chogi) + parseInt(duhae);
+	//alert(result);
+	document.getElementById("total").value = result;
+}
+
+function total2(){
+	let str = document.getElementById('total').value;
+	document.getElementById('total').value = parseInt(str)+4000;
+}
+function total3(){
+	let str = document.getElementById('total').value;
+	document.getElementById('total').value = parseInt(str)+5000;	
+}
+*/
+//-----------------------------------------------------
+
+
+
+
+
+
+
+function qfunc() {
+	if(document.getElementById('ques').value == "한라산"){
+		alert('정답');
+	}else{
+		alert('땡');
+	}	
+}
+//-----------------------------------------------------
+function calculfunc(num){
+		let a = 10;
+		let b = 4;
+		let ans;
+	if(num == 1){
+		ans = a + b;
+	}else if(num == 2){
+		ans = a - b;
+	}else if(num == 3){
+		ans = a * b;
+	}else if(num == 4){
+		ans = a / b;
+	}else if(num == 5){
+		ans = a % b;
+	}
+	alert( ans )
+} 
+
+//입력 받은 다음 2, 8, 16진수로 다변환
+</script>
+
+
+</body>
+</html>

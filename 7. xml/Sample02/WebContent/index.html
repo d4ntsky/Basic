@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 
+	JSON : Java Script Object Notation
+								표기법
+		Array -> Json
+		xml이 Json을 포함한다?
+		
+		한쌍(pair) key:value 	== HashMap(java)
+		 [111,222,333] -> [num:111,age:222,count:333]
+		 배열은 가독성이 떨어짐 
+		 
+		 [
+		 	{ "홍길동", 24, "서울시" },
+		 	{ "성춘향", 16, "남원시" }
+		 ]
+		 
+		 [
+		 	{ name: "홍길동", age: 24, addr: "서울시"},
+		 	{ name: "성춘향", age: 16, addr: "남원시"}
+		 ]
+		 
+		 Web(client)			Java(Server)		< ----- > DB 
+		 Json		--------- >	List, HashMap, Object, String
+		 key.변수명
+		 
+		 Ajax
+-->
+
+<p id="demo"></p>
+
+<script type="text/javascript">
+
+let jsonData = [	//"name":"value",
+					{
+						"name"	:	"홍길동",
+						"age"	:	24
+					},
+					{
+						"name"	:	"일지매",
+						"age"	:	21
+					},
+					{
+						"name"	:	"성춘향",
+						"age"	:	16
+					}
+				];
+				
+//document.getElementById("demo").innerHTML = jsonData[1].name + " " + jsonData[1].age;
+
+	let arrText = '{"name":"홍길동", "age":24, "주소":"서울시"}'; // Json이 아님 String
+
+//--------------------------------------------------------------------------------------------
+	let jsonObj = JSON.parse(arrText);	// String을 Json의 형태로 바꾸는 과정
+//	alert(jsonObj);
+//	alert(arrText);
+	
+	let str = JSON.stringify(jsonObj);	// Json이 String의 형태로 바꾸는 과정
+	alert(str);
+//--------------------------------------------------------------------------------------------
+	
+document.getElementById("demo").innerHTML = jsonObj.name + " " + jsonObj.주소;
+																//실무..키값은 가능한한 영어로
+
+</script>
+</body>
+</html>

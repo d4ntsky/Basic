@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<p id="demo"></p>
+
+<script type="text/javascript">
+
+let d = new Date();							// 현재	시각을 get
+
+/*
+d = new Date(2020, 10-1, 26, 6, 5, 40, 0);	// 	  	시간을 set
+				년	   월	   일   시   분   초  밀리초			cf) 월 : 0 ~ 11
+//d = new Date("October 12, 2020 12:33:17");
+
+document.getElementById("demo").innerHTML = d;
+*/
+
+document.getElementById("demo").innerHTML = d.getDay(); 		//요일
+document.getElementById("demo").innerHTML = d.getFullYear();	//연도
+document.getElementById("demo").innerHTML = d.getMonth() + 1;	//월
+document.getElementById("demo").innerHTML = d.getDate();		//일
+document.getElementById("demo").innerHTML = d.getHours();		//시
+document.getElementById("demo").innerHTML = d.getMinutes();		//분
+document.getElementById("demo").innerHTML = d.getSeconds();		//초
+</script>
+
+</body>
+</html>

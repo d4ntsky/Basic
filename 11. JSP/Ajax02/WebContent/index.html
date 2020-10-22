@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<p id="demo"></p>
+<br>
+<button type="button">click</button>
+
+<script type="text/javascript">
+$(function () {
+	
+	//cf) 
+		// String -> json : JSON.parse
+		// json -> String : JSON.stringify
+	
+	$("button").click(function() {
+		
+		$.ajax({
+			url:		"data.json",
+			type:		"get",
+			datatype: 	"json",
+			success:	function( json ) {
+			//	alert("success");
+			//	alert(json);
+			
+			//	let str = JSON.stringify(json);
+			//	alert(str);
+			
+			//	alert(json[0].name + " " + json[0].age);
+			/*
+				for (var i = 0; i < json.length; i++) {
+					$("#demo").append(json[i].name + " ");
+					$("#demo").append(json[i].age + " ");
+					$("#demo").append(json[i].address + " ");
+					$("#demo").append(json[i].phone + "<br>");
+				}	//cf) f5 json은 안 먹힘
+			*/
+				
+				$.each(json, function (index, item) {
+					$("#demo").append( index+1 + " " );
+					$("#demo").append( item.name + " " );
+					$("#demo").append( item.age + " " );
+					$("#demo").append( item.address + " " );
+					$("#demo").append( item.phone + "<br>" );
+				});
+			},
+			error:		function(){
+				alert("error");
+			}
+		});
+	});
+});
+</script>
+
+</body>
+</html>

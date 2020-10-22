@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+</head>
+<body>
+
+<!-- ------------------------------------------------------------------------------------- -->
+<h1> 송부 정보의 입력 </h1>
+<p>이벤트 처리(focus, blur)를 사용하고 확인 화면으로 이동(jsp) 시에 입력된 데이터를 출력하라.</p>
+
+<form id="frm" action="contact.jsp">
+	<pre>
+	이     름	:  <input type="text" id="name">
+
+	우편번호	:  <input type="text" id="adrNum1">-<input type="text" id="adrNum2"> <button type="button">주소 변환</button>
+
+	주     소	:  <input type="text" id="address">
+
+	전화번호	:  <input type="text" id="tele1">-<input type="text" id="tele2">-<input type="text" id="tele3">
+
+	배달시간	:  <select id="chotime">
+					<option>지정하지 않음</option>
+					<option>10:00 ~ 12:00</option>
+					<option>12:00 ~ 15:00</option>
+					<option>15:00 ~ 17:00</option>
+					<option>17:00 ~ 20:00</option>
+				</select>
+
+	영수증 요청	:  <input type="checkbox" id="rece">
+
+	매거진 수신	:  <input type="radio" name="email" value="신청"> 신청 <input type="radio" name="email" value="미신청"> 신청하지 않음
+
+	<button type="button" id="btn">확인 화면으로 진행</button>
+	</pre>
+</form>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	//focus/blur
+	$('#frm input').focus(function () {			//포커스가 들어온 경우
+		$(this).css('background-color','yellow');
+	});
+	$('#frm input').blur(function () {			//포커스가 벗어난 경우
+		$(this).css('background-color','#ffffff');
+	});
+	
+	//btn
+	$('#btn').click(function() {
+		 
+		let email = $("input[name='email']:checked").val();
+		let chotime = $("#chotime").val();
+	
+	
+		location.href = "contact.jsp?name=" + $("#name").val() +
+									"&adrNum1=" + $("#adrNum1").val() +
+									"&adrNum2=" + $("#adrNum2").val() +
+									"&address=" + $("#address").val() +
+									"&tele1=" + $("#tele1").val() +
+									"&tele2=" + $("#tele2").val() +
+									"&tele3=" + $("#tele3").val() +
+									"&rece=" + $("#rece").is(":checked") + 
+									"&email=" + email +
+									"&chotime=" + chotime;
+	});
+});
+
+//--------------------------------------------------------------------------------------------
+</script>
+<br><br><hr><br><br>
+
+<!-- ------------------------------------------------------------------------------------- -->
+<h1> Room Image </h1>
+<img alt="" src="image/photo_a.jpg" id="room">
+
+<script type="text/javascript">
+$(function() {
+	$('#room').click(function () {
+		$('#room').attr("src","image/photo_b.jpg");
+	});
+});
+
+//--------------------------------------------------------------------------------------------
+</script>
+<br><br><hr><br><br>
+
+<!-- ------------------------------------------------------------------------------------- -->
+<h1> 사진들 </h1>
+
+<input type="image" src="image/img01.jpg" class="church" value="성당 외부">
+<input type="image" src="image/img02.jpg" class="church" value="성당 내부">
+<input type="image" src="image/img03.jpg" class="church" value="은행">
+<input type="image" src="image/img04.jpg" class="church" value="가로등">
+
+<script type="text/javascript">
+$(function() {
+	$('.church').click(function () {
+		let val = $(this).attr("value");
+		alert(val);
+	});
+});
+
+//--------------------------------------------------------------------------------------------
+</script>
+<br><br><hr><br><br>
+
+<!-- ------------------------------------------------------------------------------------- -->
+<h1> DOM(문서 객체 모델)의 조작 </h1>
+
+<!-- 	<img src="image/photo_1.jpg">
+	<input type="image" src="image/photo_1.jpg" class="photo"> -->
+
+<script type="text/javascript">
+$(function () {
+	
+	let nightscape = 
+		'<img src="image/photo_1.jpg" class="photo">'+
+		'<img src="image/photo_2.jpg" class="photo">'+
+		'<img src="image/photo_3.jpg" class="photo">'+
+		'<img src="image/photo_4.jpg" class="photo">'+
+		'<img src="image/photo_5.jpg" class="photo">'+
+		'<img src="image/photo_6.jpg" class="photo">'+
+		'<img src="image/photo_7.jpg" class="photo">'+
+		'<img src="image/photo_8.jpg" class="photo">'+
+		'<img src="image/photo_9.jpg" class="photo">';
+		
+	$('body').append(nightscape);
+	
+	$(document).on("click", ".photo", function() {
+		$(this).hide();
+	});
+});
+/*
+ 	
+/*
+	$(document).on("click", "#btn2", function () {
+		alert( $('#txt2').val() );
+	});
+	//NewFile.html 확인
+ 
+*/
+//--------------------------------------------------------------------------------------------
+</script>
+
+</body>
+</html>

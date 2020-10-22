@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- xml 파일 두 개가 다르다! -->
+
+<div id="books">
+</div>
+
+<script type="text/javascript">
+
+let xhttp = new XMLHttpRequest();
+
+xhttp.onreadystatechange = function () {
+	if(this.readyState == 4 && this.status == 200) {
+		xmlFunc(this);	//this.responseXML 문자열만 넘어간거 //this만 있으면 그 쪽에서 꺼내주기(요즘 방법)
+	}
+}
+xhttp.open("GET","bookstore.xml",true);//중간거 "d:/tmp/book.xml" 이런식은 안됨 에디터가 아님
+xhttp.send();
+
+function xmlFunc( xml ) {
+	
+	let xmlDoc = xml.responseXML;	//(꺼내주는 곳)
+//	alert(xmlDoc); //확인용
+
+	// root 태그 취득
+	let rootTagName = xmlDoc.documentElement.nodeName;
+//	alert(rootTagName);
+
+	// node명을 취득
+	let nodeArr = xmlDoc.documentElement.childNodes;
+//	alert(nodeArr);
+	
+	let nodeName;
+	
+	// node list의 취득 확인
+	for (i = 0; i < nodeArr.length; i++) {
+		if(nodeArr[i].nodeType == 1) {
+			nodeName = nodeArr[i].nodeName;
+//			alert(nodeName);	//노드 name들의 취득 확인 
+		}
+	}
+	
+	// table 준비 및 시각화
+	let out = "<table border='1'>";
+	out += "<col width='70'><col width='100'><col width='140'><col width='100'>";
+	out += "<tr>";
+	out += "<th>number</th>";
+	
+	// column명을 취득
+	columnName = xmlDoc.getElementsByTagName( nodeName )[0];
+	
+	let child = columnName.firstChild;
+//	alert(columnName.childNodes.length);
+	for (i = 0; i < columnName.childNodes.length; i++) {
+		if(child.nodeType == 1) {
+//			alert(child.nodeName);
+			out += "<th>" + child.nodeName + "</th>";
+		}
+		child = child.nextSibling;
+	}
+	
+	out += "</tr>";
+	
+	// data 출력
+	let len = xmlDoc.getElementsByTagName(nodeName).length;
+//	alert(len);	
+	for (i = 0; i < len; i++) {
+		out += "<tr>";
+		
+		//번호 
+		out += "<th>"+(i+1)+"</th>";
+		
+		//각 <book>을 가져오는
+		let dataArr = xmlDoc.getElementsByTagName(nodeName)[i]; //nodeName == book
+	
+		child = dataArr.firstChild;
+		for (j = 0; j < dataArr.childNodes.length; j++) { //안에도 자동완성하면 i로 나옴
+			if(child.nodeType == 1) {
+				out += "<td>" + child.childNodes[0].nodeValue + "</td>";
+			}
+			child = child.nextSibling;
+		}
+		out += "</tr>";
+	}
+	out += "</table>";
+	
+	document.getElementById('books').innerHTML = out;
+}
+</script>
+
+<!--
+<p id="demo"></p>
+
+<script type="text/javascript">
+
+let xhttp = new XMLHttpRequest();
+
+xhttp.onreadystatechange = function () {
+	
+	if(this.readyState == 4 && this.status == 200) {
+		nodeValFunc(this);
+	} 
+}
+xhttp.open("GET", 'book.xml', true);
+	xhttp.send();
+	
+function nodeValFunc( xml ) {
+	let bonm, auth, pric;
+	let bootxt, auttxt, montxt, xmlDoc;
+	
+	bootxt = auttxt = montxt = "";
+	
+	xmlDoc = xml.responseXML;
+	console.log(xmlDoc);
+	
+	bonm	= xmlDoc.getElementsByTagName("도서명");
+	auth	= xmlDoc.getElementsByTagName("저자");
+	pric	= xmlDoc.getElementsByTagName("가격");
+	console.log(bonm.length);
+	
+	for (i = 0; i < bonm.length; i++) {
+		bootxt += bonm[i].childNodes[0].nodeValue + "<br>";
+		auttxt += auth[i].childNodes[0].nodeValue + "<br>";
+		montxt += pric[i].childNodes[0].nodeValue + "<br>";
+	}
+	document.getElementById("demo").innerHTML 
+		= bootxt + auttxt + montxt;
+}
+</script>
+-->
+</body>
+</html>

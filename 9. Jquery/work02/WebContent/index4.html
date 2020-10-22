@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+</head>
+<body>
+
+<div class="pic">
+
+</div>
+
+<script type="text/javascript">
+$(function () {
+	
+	
+	let picname = ['myimage.jpg','back.jpg','picture.png'];
+	
+	
+	for(i = 1; i < 10; i++){
+		let img = $("<img></img>").attr("src", "./image/photo_" + i + ".jpg").attr("class","myimg");	
+		/*2
+		let img = $("<img)</img>").attr({
+											"src":"./image/photo_" + i + ".jpg",
+											"class":"myimg"
+										});*/
+		$(".pic").append(img);
+	}
+	
+	/*
+	$("img").click(function() {
+		$(this).remove();
+	});
+	*/
+
+	$(".myimg").click(function() {
+		$(this).remove();
+	});
+	
+});
+</script>
+
+</body>
+</html>

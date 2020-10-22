@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 
+<script src="https://code.jquery.com/jquery-3.5.1.min.js">
+//head에 올리면 웹페이지가 느려진다...
+</script>
+ -->
+</head>
+<body>
+
+<p id="ptag">p tag</p>
+
+<button type="button">button</button>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js">
+//위치에 구애를 받진 않지만 종종 볼 수 있다
+//헤더에 올려야 가독성이 좋음
+</script>
+<script type="text/javascript">
+
+//문서를 다 읽은 후 function
+$(document).ready(function () {
+//	alert('ready');
+});
+
+//function 실행부터
+$(function () {
+	/*
+	$('#ptag').click(function() {	//onclick과 동일
+		alert('p click');
+	});
+	*/
+	
+	$('#ptag').on("click", function() {
+		alert('p on click 2')
+	});
+	
+	/*
+	$('button').click(function () {
+		alert('button click')
+	});
+	*/
+	
+	$("button").on("click", btnClick);	//Java Script와 같이
+
+});
+
+function btnClick() {
+	alert('btnClick 호출')
+}
+</script>
+
+</body>
+</html>

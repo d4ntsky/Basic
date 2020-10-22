@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js">
+// cf) 실무에서 안 될 때는 버젼을 확인하고 아는 게 되지 않으면 Java Script로 처리
+</script>
+
+</head>
+<body>
+
+<!-- ----------------------------------------------------------------------- -->
+
+<!-- Radio 접근 
+				id 사용x
+				name 주니까 하나만 선택가능
+				none으로 지우는 법 찾아보기
+-->
+<ul>
+	<li><input type="radio" name="radio_test" value="사과" checked="checked">사과</li>
+	<li><input type="radio" name="radio_test" value="포도">포도</li>
+	<li><input type="radio" name="radio_test" value="참외">참외</li>
+</ul>
+<button type="button" id="choice">선택</button>
+
+<script type="text/javascript">
+$(function () {
+	
+	$("#choice").click(function() {
+		
+		//getter
+//		let radioVal = $("input[name='radio_test']:checked").val();
+//		alert(radioVal);
+		
+		//setter
+		$('input[name="radio_test"]').val( ["포도"] );
+		
+	});
+	
+	//라디오 버튼 초이스 해제!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	$('input[name=radio_test]').dblclick(function () {
+	    $('input[name="radio_test"]:checked').prop('checked', false);
+	});
+	
+});
+</script>
+<br><hr><br>
+<!-- ----------------------------------------------------------------------- -->
+
+<!-- CheckBox 접근 
+				전송할때만 name 같은거!
+-->
+<input type="checkbox" id="chk1" name="ch">그림그리기<br>
+<input type="checkbox" id="chk2" name="ch">음악 듣기<br>
+<input type="checkbox" id="chk3" name="ch">책 읽기<br>
+<br>
+<button type="button" id="chBtn">체크</button>
+
+<script type="text/javascript">
+$("#chBtn").click(function() {
+	
+//getter
+	//1)
+//	let check = $("#chk1").is(":checked");
+//	alert("check: " + check);
+	//2)
+//	let check = $("input:checkbox[id='chk1']").is(":checked");
+//	alert("check: " + check);
+
+//setter
+	$("#chk1").prop("checked", true); //체크 버튼으로 체크 하는 것
+										//홈페이지로 만들 때 체크 버튼 기능이 수신 동의로 바꿔주게 하면??:
+
+});
+</script>
+
+<!-- ----------------------------------------------------------------------- -->
+</body>
+</html>

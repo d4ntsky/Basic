@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+변수(Variable)
+
+<p id="demo">p Tag</p>
+
+<script type="text/javascript">
+/*
+old school 
+	var -- int, double, String, Object, char, class
+		MyClass cls = new MyClass();
+		Object obj = new MyClass(); 이것이 var로 바뀐거나 다름 었다. 다 내포하는...
+			cf) var는 포괄적이라 렉은 안나지만.. 망치기 쉬움 선언(충돌이 많이 생긴다)
+	
+thesedays
+	let --
+		let은 반드시 위에서 선언.
+		var와 달리 똑같은 변수로 쓰면 에러가 난다. 		
+			cf) 개발자들은 let 선호
+*/
+	
+// 접근법 
+//-------------------------------------------------------------------------	
+	var num = 123;
+	var pi = 3.141592;
+	var name = "홍길동";
+	var name2 = '일지매';	//문자열 따옴표 구분 없다
+	var answer = true; 			//Boolean
+	
+/*	var human = "임꺽정", number = 234 + 1; 
+	console.log(human);
+	console.log(number);	*/
+	
+	human = "임꺽정"; 
+	number = 234 + 1;
+	
+/*	number = '허준';
+	console.log(number);	//오류가 갑자기 날 수도 있지만 숫자가 문자로 바뀌는 게 가능은 하다.*/
+	
+	let man; //을 밑으로 허용 안 함, 초기화 값 넣기 전부터
+	man = '성춘향';
+	console.log(man);
+	//let man;
+	
+	var human, number; // 초기화 안하고 나중에 불러도 가능함
+	console.log(human);
+	console.log(number);
+	
+	// 문자열로 시작
+	let nn = "5" + 3 + 1; // -> 531
+	console.log(nn);
+	// 숫자로 시작
+	nn = 3 + 1 + "5";	  // -> 45
+	console.log(nn);
+
+	// Array
+	//let cars = { "BMW", "Volva", "Saab" };
+	let cars = [ "BMW", "Volvo", "Saab" ];
+	console.log(cars[1]);
+	
+	//int Arr[] = new int[3];
+	cars = new Array(3);
+	cars[0]	= '비엠';
+	cars[1]	= '볼보';
+	cars[2]	= '사브';
+	console.log(cars[1]);
+	
+	//for(int i = 0; i < cars.length; i++) {	console.log(cars[i]);     }	-- for
+	for(i = 0; i < cars.length; i++) {	console.log(cars[i]);	}
+	
+	//for(object obj : cars) {	println( obj );	} 							-- foreach
+	for(i in cars) {  console.log( cars[i] );	}
+//-------------------------------------------------------------------------
+															//아는 접근법 종료
+	// Object = Json(key:value), class
+	// cont == final(상수) - 변경 불가
+	
+	//let obj = {	
+	const obj = {	//배열 앞에 키값 준 느낌...
+		firstname:'순신',
+		lastname:'이',
+		age:24,
+		func:function(){
+			console.log("func() 호출");
+			console.log("lastname: " + this.lastname); //lastname 앞 this 확인
+														//오브젝트 내에 선언되어있으면 ..java랑 다른!
+		}
+	}
+	
+	console.log(obj.firstname);
+	console.log(obj.lastname);
+	obj.func();
+	//obj = 'hello';
+	
+	class Person {
+		constructor(name, age)	{
+			this.name = name;
+			this.age = age;
+		}
+		print(){
+			//console.log(this.name + " " + this.age);
+			console.log( ` ${this.name}:hello world ` );	//확인 숫자 1 옆 ```````````````
+								// cf) 파이썬 표현..
+		}
+	}
+	
+	let per = new Person('세종대왕', 40);
+	console.log(per.name);
+	console.log(per.age);
+	per.print();
+	
+	document.getElementById('demo').innerHTML
+		//자료형보는
+		= "장길산"	 + typeof "장길산"	+ "<br>"
+		+ "325"		 + typeof 325		+ "<br>"
+		+ "3.141592" + typeof 3.141592 	+ "<br>"
+		+ "true" 	 + typeof true 		+ "<br>"
+		+ "array" 	 + typeof [1,2,3] 	+ "<br>"
+		+ "object"   + typeof { num:1, num:'abc' };
+</script>
+
+</body>
+</html>

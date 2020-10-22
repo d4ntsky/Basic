@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<!-- 
+	Web(Client)			--- >				Java(Server)
+	
+-------------------------------------------------------------
+	<a href=hello?name=홍길동&		String name = request.getParameter("name");
+	
+-------------------------------------------------------------	
+	<form action="hello" method="post">
+		<input type="text" name="name" value="홍길동">
+	</form>										  request.getParameter("name");
+
+-------------------------------------------------------------
+Java Script (form 사용 안했을때)	
+	<input type="text" name="name" value="홍길동">
+	<button type="button" onclick="btnFunc()">
+	<script>
+	function btnFunc() {
+		let name = document.getElementById("name");
+		location.href = "hello?name=" + name;
+	} 
+	</script>
+	
+-------------------------------------------------------------
+Java Script (form 사용했을때)	
+	<form name="frm">
+		<input type="text" name="name" value="홍길동">
+	</form>
+	<button type="button" onclick="btnFunc()">
+	<script>
+	function btnFunc() {
+		let name = document.frm.name.value;
+	}
+	</script>
+	
+-------------------------------------------------------------
+JQuery (form 사용 안했을때)	
+	<input type="text" name="name" value="홍길동">
+	<button type="button" id="btn">
+	<script>
+	$(document).ready(function() {
+		$('#btn').click(function() {
+			location.href = "hello?name=" + $("#name").val();
+		});
+	});
+	</script>
+	
+-------------------------------------------------------------
+JQuery (form 사용했을때)	-	가장 많이 사용
+	<form id="frm">
+	<input type="text" name="name" value="홍길동">
+	</form>
+	<button type="button" id="btn">
+	<script>
+	$(function(){
+		$("#btn").on("click", function() {
+			// 빈칸 검사, 글자수 검사
+			
+			$("#frm").attr("action", "hello").submit();	
+						나중 액션으로 적용된다.
+						실무에선 action부분을 따로빼서...		
+		});
+	});
+	</script>
+
+-------------------------------------------------------------
+cf)
+	Web		----- >			Java		----- >		DB
+	JScript				JavaBean(DAO)-DAO는 싱글턴	- MVC model1
+						Controller				- MVC model2 -- > Spring
+
+	Java (Servlet)		----- >		Web (Client)
+						----- >		Java (Servlet)
+	response.sendRedirect("sampleServlet");					
+	response.sendRedirect("sample.html");	-- > Ajax(JQuery)
+	response.sendRedirect("sample.jsp");
+	
+	짐 (낱개 포장) 딸려보낼땐
+	response.sendRedirect("sampleServlet?age=24");
+	response.sendRedirect("sample.jsp?age=24");
+	
+	짐을 쌓기
+	request.setAttribute("지정 문자열", Object);
+	짐을 쌓고 보낼땐
+	request.RequestDispatcher("sampleServlet").forward(request, response);
+	request.RequestDispatcher("sample.jsp").forward(request, response);
+						짐 풀기
+						object obj = request.getAttribute("지정 문자열");
+
+------------------------------------------------------------->
+
+
+<form id="frm" method="post">
+	
+<table>
+	<tr>
+		<td>이름</td>
+		<td>
+			<input type="text" id="_name" name="name" size="20" placeholder="이름">
+		</td>
+	</tr>
+	<tr>
+		<td>나이</td>
+		<td>
+			<input type="text" id="_age" name="age" size="5" placeholder="나이">
+		</td>
+	</tr>
+</table>
+
+<button type="button" id="btn">전송</button>
+
+</form>
+
+<!-- 
+	index.html--- >
+			HiServlet--- >	
+						SampleServlet--- > 
+								detail.jsp
+	name	Object
+			SetAttribute
+						getAttribute
+ -->
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	$("#btn").click(function () {
+		//alert('클릭');
+		if( $("#_name").val() == '' ) {
+			alert("이름을 입력 해주세요");
+			$("#_name").focus();
+		}
+		else if( $("#_age").val() == '' ) {
+			alert("나이를 입력 해주세요");
+			$("#_age").focus();
+		}
+		else {
+			$("#frm").attr("action", "hi").submit();
+		}
+	});
+});
+</script>
+
+</body>
+</html>

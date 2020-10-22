@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>custuserlist</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<h1>고객 목록</h1>
+
+<form action="" method="post"><!-- muldel.jsp -->
+<!-- 한번에 삭제 multidelete -->
+
+<table style="width: 700">
+<col width="100"><col width="300"><col width="300">		
+
+	<tr>
+		<td height="2" bgcolor="#0000ff" colspan="3"></td>
+	</tr>	
+	
+	<tr>
+		<th bgcolor="#ffff00">
+			<input type="checkbox" name="alldel" onclick="deletechecks(this.checked)">
+		</th>
+		<th>ID</th>
+		<th>Name</th>
+	</tr>
+	
+	<tr id="here">
+		<td height="2" bgcolor="#0000ff" colspan="3"></td>
+	</tr>	
+
+<!-- 데이터가 없을 경우 -->	
+	
+<!-- 	<tr bgcolor="#f3f3f3">
+		<td colspan="3" align="center">고객 리스트가 존재하지 않습니다</td>
+	</tr>
+	<tr>
+		<td height="2" bgcolor="#0000ff" colspan="3"></td>
+	</tr>	
+	 -->
+	
+
+<!-- 데이터가 있을 경우 -->
+	
+	
+<!-- 		<tr bgcolor="#f6f6f6">
+			<td align="center" bgcolor="yellow">
+				<input type="checkbox" name="delck" value="">%cust.getId()
+			</td>
+			<td>
+	
+		<p id="idd"></p>
+			</td>
+			<td>
+				<a href="custuserdetail.jsp?id=">
+					<p id="이름"></p>
+				</a>
+			</td>
+		</tr> -->
+		<tr>
+			<td height="2" bgcolor="#0000ff" colspan="3"></td>
+		</tr>	 
+	
+	
+<!-- 갯수 늘리는 곳 여기까지 -->
+
+<tr>
+	<td align="center" height="1" bgcolor="#c0c0c0" colspan="3">
+		<!-- 다중 삭제용 submit -->
+		<input type="submit" value="고객정보 삭제">
+	</td>
+</tr>
+
+<tr>
+	<td height="2" bgcolor="#0000ff" colspan="3"></td>
+</tr>
+
+<tr bgcolor="#f6f6f6">
+	<td colspan="3">
+		<a href="custuseradd.html">고객정보 추가</a>
+	</td>
+</tr>
+
+</table>
+
+</form>
+
+<button type="button" id="ckck">확인</button>
+
+<script type="text/javascript">
+//$(document).on(function () {
+$(function () {
+$("#ckck").click(function() {
+	
+	$.ajax({
+		url:"data.jsp",
+		type:"get",
+		datatype:"json",
+		success: function( obj ) {
+				//alert("success");
+				//alert(obj);
+				let jsn = JSON.parse( obj );
+				let jsnLen = jsn.length;
+				//alert(jsnLen);
+				//alert(jsn[1].name);
+				
+				//$("#jsnChl").html(jsn.id);
+				//넣어주기 시작
+				
+				if(jsnLen == 0) {
+					
+					let	noData = "<tr bgcolor='#f3f3f3'>"
+							+"<td colspan='3' align='center'>"
+							+"고객 리스트가 존재하지 않습니다"
+							+"</td>"
+							+"</tr>"
+							+"<tr>"
+							+"<td height='2' bgcolor=''#0000ff' colspan='3'>"
+							+"</td>"
+							+"</tr>";
+				//
+					$("#here").after(noData);
+							
+				}else {
+					//---------------------
+					$.each(jsn, function (i, val) {
+						
+						
+					//----------------------
+					
+						let	yesData = "<tr bgcolor='#f6f6f6'>"
+									+ "<td align='center' bgcolor='yellow'>"
+									+ "<input type='checkbox' name='delck' value=" + val.id + ">" 
+									+ "</td>"
+									+ "<td>"
+									+ val.id
+									+ "</td>"
+									+ "<td>"	
+									+ "<a href='custuserdetail.html?id="+val.id+"'>"
+									+ val.name
+									+ "</a>"
+									+ "</td>"
+									+ "</tr>";
+					
+						$("#here").after(yesData);
+					
+					
+					});
+				}
+			},
+			error: function() {
+				alert("error");
+			}
+		});
+	
+});	
+});
+
+/*
+function deletechecks( ch ) {
+	
+	let arrCheck = document.getElementsByName("delck");
+	
+	for(i = 0; i <arrCheck.length; i++) {
+		arrCheck[i].checked = ch;
+	}
+}
+*/
+</script>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1>xml</h1>
+
+<table id="xml" border="1"></table>
+
+<script type="text/javascript">
+
+let xhttp = new XMLHttpRequest();
+
+xhttp.onreadystatechange = function () {
+	
+	if(this.readyState == 4 && this.status == 200) {
+		nodeValFunc(this);
+	} 
+}
+xhttp.open("GET", 'book.xml', true);
+	xhttp.send();
+	
+function nodeValFunc( xml ) {
+	let bonm, auth, pric;
+	let bootxt, auttxt, montxt, xmlDoc;
+	
+	bootxt1 = auttxt1 = montxt1 = "";
+	bootxt2 = auttxt2 = montxt2 = "";
+	bootxt3 = auttxt3 = montxt3 = "";
+	bootxt4 = auttxt4 = montxt4 = "";
+	bootxt5 = auttxt5 = montxt5 = "";
+	
+	xmlDoc = xml.responseXML;
+	//console.log(xmlDoc);
+	
+	bonm	= xmlDoc.getElementsByTagName("도서명");
+	auth	= xmlDoc.getElementsByTagName("저자");
+	pric	= xmlDoc.getElementsByTagName("가격");
+	//console.log(bonm.length);
+	
+	
+		bootxt1 = bonm[0].childNodes[0].nodeValue;
+		auttxt1 = auth[0].childNodes[0].nodeValue;
+		montxt1 = pric[0].childNodes[0].nodeValue;
+		
+		bootxt2 = bonm[1].childNodes[0].nodeValue;
+		auttxt2 = auth[1].childNodes[0].nodeValue;
+		montxt2 = pric[1].childNodes[0].nodeValue;
+		
+		bootxt3 = bonm[2].childNodes[0].nodeValue;
+		auttxt3 = auth[2].childNodes[0].nodeValue;
+		montxt3 = pric[2].childNodes[0].nodeValue;
+		
+		bootxt4 = bonm[3].childNodes[0].nodeValue;
+		auttxt4 = auth[3].childNodes[0].nodeValue;
+		montxt4 = pric[3].childNodes[0].nodeValue;
+		
+		bootxt5 = bonm[4].childNodes[0].nodeValue;
+		auttxt5 = auth[4].childNodes[0].nodeValue;
+		montxt5 = pric[4].childNodes[0].nodeValue;
+	
+	document.getElementById("xml").innerHTML 
+		= "<tr>" + "<th>" + "책 제목" + "</th>" + "<th>" + "저자" + "</th>" + "<th>"+ "가격" + "</th>" + "</tr>"
+		+"<tr>" + "<td>" + bootxt1 + "</td>" + "<td>" + auttxt1 + "</td>" + "<td>"+ montxt1 + "</td>" + "</tr>"
+		+"<tr>" + "<td>" + bootxt2 + "</td>" + "<td>" + auttxt2 + "</td>" + "<td>"+ montxt2 + "</td>" + "</tr>"
+		+"<tr>" + "<td>" + bootxt3 + "</td>" + "<td>" + auttxt3 + "</td>" + "<td>"+ montxt3 + "</td>" + "</tr>"
+		+"<tr>" + "<td>" + bootxt4 + "</td>" + "<td>" + auttxt4 + "</td>" + "<td>"+ montxt4 + "</td>" + "</tr>"
+		+"<tr>" + "<td>" + bootxt5 + "</td>" + "<td>" + auttxt5 + "</td>" + "<td>"+ montxt5 + "</td>" + "</tr>";
+		
+}
+</script>
+
+<br><hr><br>
+
+<h1>json</h1>
+
+<table id="jso" border="1"></table>
+
+<script type="text/javascript">
+
+let xhttp2 = new XMLHttpRequest();
+
+xhttp2.onreadystatechange = function () {
+	if(xhttp2.readyState == 4 && xhttp2.status == 200) {
+		jsonFunc( xhttp2.responseText );
+	}
+}
+xhttp2.open("GET", "book.json", true);
+xhttp2.send();
+
+function jsonFunc( resp ) {
+	let arr = JSON.parse(resp);
+	
+	let txt = "";
+	
+	for (i = 0; i < arr.length; i++) {
+		
+		txt += "<tr>"+"<td>" + arr[i].title + "</td>" +
+						"<td>" + arr[i].author + "</td>" +
+						"<td>" + arr[i].price + "</td>" + "</tr>";
+	}
+	document.getElementById("jso").innerHTML = "<tr>" + "<th>" + "책 제목" + "</th>" + "<th>" + "저자" + "</th>" + "<th>"+ "가격" + "</th>" + "</tr>"+ txt ;
+}
+</script>
+
+</body>
+</html>

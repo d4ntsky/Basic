@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- ---------------------------------------------------------------------- -->
+<h1>배열의 연산</h1><br>
+<br>
+
+
+<table border="1">
+	<tr style="background-color: graytext">
+		<th>첨자</th>
+		<th>a</th>
+		<th>b</th>
+		<th>a x b 계산</th>
+	</tr>
+	<tr>
+		<th bgcolor="gray">0</th>
+		<td></td>
+		<td></td>
+		<td><button type="button">계산결과</button></td>
+	</tr>
+	<tr>
+		<th bgcolor="gray">1</th>
+		<td></td>
+		<td></td>
+		<td><button type="button">계산결과</button></td>
+	</tr>
+	<tr>
+		<th bgcolor="gray">2</th>
+		<td></td>
+		<td></td>
+		<td><button type="button">계산결과</button></td>
+	</tr>
+</table>
+
+<script type="text/javascript">
+
+//-----------------------------------------------------------------------------
+</script>
+<br>
+<hr>
+<br>
+
+<!-- ---------------------------------------------------------------------- -->
+<h1>단가 x 수량 알람표</h1><br>
+<br>
+<button type="button">추가</button>
+<br><br>
+<table id="mytable" border="1">
+	<tr>
+		<th>개수</th>
+		<th>제품A</th>
+		<th>제품B</th>
+		<th>제품C</th>
+	</tr>
+<!-- 추가
+	<tr>
+		<th>1</th>
+		<td>100</td>
+		<td>450</td>
+		<td>520</td>
+	</tr>
+ -->
+</table>
+
+<script type="text/javascript">
+//단추로 추가가능한지...?
+let c = 300;
+let d = 450;
+let e =  520;
+
+
+// file로 read하는 경우
+let cArr = [23,43,1,34,56];
+let dArr = [3,61,23,53,33];
+let eArr = [12,54,4,32,14];
+
+let tbody = document.getElementById("mytable");
+
+for(i = 0; i < cArr.length; i++){
+	let trow = document.createElement("tr");
+
+	let thead = document.createElement("th");
+	thead.appendChild(document.createTextNode((i+1) + ""));
+
+	let tdata1 = document.createElement("td");
+	tdata1.appendChild(document.createTextNode( cArr[i] ) );
+	//c = c + 300;									c
+	let tdata2 = document.createElement("td");
+	tdata2.appendChild(document.createTextNode( dArr[i] ) );
+	//d = d + 450;									d
+	let tdata3 = document.createElement("td");
+	tdata3.appendChild(document.createTextNode( eArr[i] ) );
+	//e = e + 520;									e
+
+	// th, td, td, td -> tr에 추가
+	trow.appendChild(thead);
+	trow.appendChild(tdata1);
+	trow.appendChild(tdata2);
+	trow.appendChild(tdata3);
+
+	// tr -> table추가
+	tbody.appendChild(trow);
+}
+//-----------------------------------------------------------------------------
+</script>
+<br>
+<hr>
+<br>
+
+<!-- ---------------------------------------------------------------------- -->
+<h1>(문제)</h1><br>
+사나이들의 영화인 탑건은 군인 영화입니다. 그러면 육,해,공군 중 어느 군의 영화일까요?<br><br>
+<button type="button" onclick="">체크</button>
+
+<script type="text/javascript">
+
+//-----------------------------------------------------------------------------
+</script>
+<br>
+<hr>
+<br>
+
+<!-- ---------------------------------------------------------------------- -->
+<h1>(문제)</h1><br>
+다음 이차 방정식을 해를 구하고, 그 버튼을 클릭하십시오.<br>
+<h2>   x<sup>2</sup>-5x=-6</h2>
+<button type="button" name="ans" onclick="cal(1)" value="1">x = 1</button>
+<button type="button" name="ans" onclick="cal(2)" value="2">x = 2</button>
+<button type="button" name="ans" onclick="cal(3)" value="3">x = 3</button>
+<button type="button" name="ans" onclick="cal(4)" value="4">x = 4</button>
+<button type="button" name="ans" onclick="cal(5)" value="5">x = 5</button>
+
+<script type="text/javascript">
+let num = parseInt(document.getElementsByName('ans').value);//아이디 틀림
+function cal(num) {
+	if((num * num)-(5 * num) == -6) {
+		alert('정답')
+	}else{
+		alert('오답')
+	}
+}
+//-----------------------------------------------------------------------------
+</script>
+
+<br>
+<hr>
+<br>
+
+<!-- ---------------------------------------------------------------------- -->
+<h1>포털 사이트</h1><br>
+"열기" 버튼을 클릭하면 해당 홈페이지를 새창에서 볼 수 있습니다.<br>
+
+<table border="1">
+	<tr>
+		<th bgcolor="green"><font color ="white">네이버</font></th>
+		<td>http://www.naver.com/</td>
+		<td><button type="button" onclick="window.open('http://www.naver.com/')">열기</button></td>
+	</tr>
+	<tr>
+		<th bgcolor="green"><font color ="white">다음</font></th>
+		<td>http://www.daum.net/</td>
+		<td><button type="button" onclick="window.open('http://www.daum.net/')">열기</button></td>
+	</tr>
+	<tr>
+		<th bgcolor="green"><font color ="white">줌</font></th>
+		<td>http://zum.com/</td>
+		<td><button type="button" onclick="window.open('http://zum.com/')">열기</button></td>
+	</tr>
+</table>
+<script type="text/javascript">
+//-----------------------------------------------------------------------------
+</script>
+<br>
+<hr>
+<br>
+
+<!-- ---------------------------------------------------------------------- -->
+<h1>사진들</h1><br>
+<br>
+<table>
+	<tr>
+		<td>	
+		사진
+		</td>
+		<td>
+		<select>
+		<option>사진의 선택</option>
+		<option>사진의 선택</option>
+		</select>
+		</td>
+	</tr>
+</table>
+<script type="text/javascript">
+
+//-----------------------------------------------------------------------------
+</script>
+<br>
+<hr>
+<br>
+
+</body>
+</html>

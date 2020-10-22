@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body bgcolor="black" text="white">
+
+<!-- ------------------------------------------------------- -->
+<h1>배경 화면의 설정</h1>
+<br>
+
+<button type="button" onclick="document.bgColor='red'">빨강</button> 	
+<button type="button" onclick="document.bgColor='#00ff00'">초록</button> 	
+<button type="button" onclick="colorSet(1)">검정</button> 	
+
+<script type="text/javascript">
+function colorSet(color) {
+	if(color == 1){
+		document.bgColor = "black";
+	}
+}
+
+//--------------------------------------------------------------
+</script>
+<br>
+<hr>
+<br>
+
+<!-- ------------------------------------------------------- -->
+<h1>문제</h1>
+영어 속담으로 "1일 1개씩 먹으면 의사는 필요없다" 라고 하는 과일은 무엇일까요?
+<br>
+<br>
+
+<input type="checkbox" id="eng">영어를 선택<br><br>
+답: <input type="text" id="answer" size="20">
+
+<button type="button" onclick="check()">정답 체크</button> 
+
+
+<script type="text/javascript">
+function check() {	//cf) click은 함수명 xx
+	let eng = document.getElementById('eng').checked;//true/false
+	//alert(eng);
+	let answer = document.getElementById('answer').value;
+	//alert(answer);
+	if(eng == true) {
+		if(answer == 'apple' || answer == 'APPLE' || answer == 'Apple') {
+			alert('정답입니다');
+		}else{
+			alert('오답입니다');
+		}
+	}else{
+		if(answer == '사과' || answer == '능금') {
+			alert('정답입니다');
+		}else{
+			alert('오답입니다');
+		}
+	}
+}
+
+//--------------------------------------------------------------
+</script>
+ 
+ <!-- 완성은 안했지만 요소만 찾는법
+ <form action="" name="frm">
+ <input type="checkbox" id="_eng" name="eng">영어를 선택<br><br>
+답: <input type="text" id="_answer" name="answer" size="20">
+
+<button type="button" onclick="check()">정답 체크</button> 
+ </form>
+ <script type="text/javascript">
+ function check() {
+ /*
+	let checkbox = document.frm.eng.checked;
+	//alert(checkbox);
+	let text = document.frm.answer.value;
+	//alert(text);
+*/
+//frm으로 이름이 안 주는 경우
+	let checkbox = document.forms[0].elements[0].checked;//name이 아닌 html 내에 첫번째 체크박스 체크
+	//alert(checkbox);
+	let text = document.forms[0].elements[1].value;
+	alert(text);
+}
+ </script>
+-->
+<br>
+<hr>
+<br>
+<!-- ------------------------------------------------------- -->
+<h1>미술관 및 박물관 링크</h1>
+<br>
+<form action="" name="frm2">
+<select id="links" onchange="golink()" name="links">
+	<option>대상을 선택</option>
+	<option>미술관------</option>
+	<option value="http://sema.seoul.go.kr/">서울시립미술관</option>
+	<option value="http://www.mmca.go.kr/">국립현대미술관</option>
+	<option value="http://www.sac.or.kr/">예술의 전당</option>
+	<option>박물관------</option>
+	<option value="http://www.museum.go.kr/">국립중앙박물관</option>
+	<option value="http://www.museum.seoul.kr/">서울역사박물관</option>
+	<option value="http://www.nfm.go.kr/">국립민속박물관</option>
+</select>
+</form>
+
+<script type="text/javascript">
+function golink() {
+	
+	let selIndex = document.getElementById('links').selectedIndex; //1
+	//alert(selIndex);
+	
+	let url = document.getElementById("links").options[selIndex].value;
+	//alert(url);
+	/* 확인
+	let selIndex = document.frm2.links.seletedIndex;	//2 form
+	//alert(selIndex);
+	
+	let url = document.frm2.links.options[selIndex].value;
+	*/
+	if(selIndex != 0 && selIndex != 1 && selIndex != 5) {
+		location.href = url;
+	}
+}
+
+
+//--------------------------------------------------------------
+</script>
+<br>
+<hr>
+<br>
+<!-- ------------------------------------------------------- -->
+<h1>2개의 주사위</h1>
+버튼을 클릭하면 2개의 주사위가 랜덤됩니다<br>
+<br>
+
+<img alt="" src="images/sai_1.gif" id="d1">
+<img alt="" src="images/sai_1.gif" id="d2">
+<br>
+
+<p id="dic1">sum</p>
+<br>
+<button type="button" onclick="dice()">주사위를 던진다</button>
+
+<script type="text/javascript">
+function dice() {
+	let r1 = Math.random() * 6;
+	let r2 = Math.random() * 6;	
+	r1 = Math.ceil(r1);
+	r2 = Math.ceil(r2);
+	//alert(r1);
+	
+//	document.getElementById("d1").src = 'images/sai_' + r1 + '.gif';
+//	document.getElementById("d2").src = 'images/sai_' + r2 + '.gif';
+	
+	//이 문서에 그림 순으로 
+	document.images[0].src = 'images/sai_' + r1 + '.gif';
+	document.images[1].src = 'images/sai_' + r2 + '.gif';
+
+	document.getElementById("dic1").innerHTML = r1 + r2;	// sum 부분
+}
+//--------------------------------------------------------------
+</script>
+<br>
+<hr>
+<br>
+<!-- ------------------------------------------------------- -->
+<h1>환영합니다</h1>
+<br>
+현재 시각은 <input type="text" size="20" id="timebox">입니다
+
+<script type="text/javascript">
+function nowTime() {
+	let now = new Date();
+	
+	let hour = now.getHours();
+	let minute = now.getMinutes();
+	let second = now.getSeconds();
+
+	// 1:1:20 -> 01:01:20 표현
+	if(hour < 10) {
+		hour = "0" + hour;
+	}
+	if(minute <10) {
+		minute = "0" + minute;
+	}
+	if(second <10) {
+		second = "0" + second;
+	}
+	
+	document.getElementById('timebox').value = hour + ":" + minute + ":" + second;
+
+}
+
+setInterval("nowTime()", 100);
+//--------------------------------------------------------------
+</script>
+<br>
+<hr>
+<br>
+<!-- ------------------------------------------------------- -->
+<h1>풍경사진</h1>
+<br>
+이미지 위로 마우스를 이동하면, 그 이미지가 컬러로 표시됩니다.
+<br><br>
+
+<table>
+<col width="33%"><col width="33%"><col width="33%">
+<tr>
+	<td>
+		<img alt="" src="images/m_nature01.jpg"
+			onmouseover="this.src='images/nature01.jpg'"
+			onmouseout="this.src='images/m_nature01.jpg'">
+	</td>
+		<td>
+		<img alt="" src="images/m_nature02.jpg"
+			onmouseover="this.src='images/nature02.jpg'"
+			onmouseout="this.src='images/m_nature02.jpg'">
+	</td>
+		<td>
+		<img alt="" src="images/m_nature03.jpg"
+			onmouseover="this.src='images/nature03.jpg'"
+			onmouseout="this.src='images/m_nature03.jpg'">
+	</td>
+</tr>
+<tr>
+	<td>
+		<img alt="" src="images/m_nature04.jpg"
+			onmouseover="this.src='images/nature04.jpg'"
+			onmouseout="this.src='images/m_nature04.jpg'">
+	</td>
+	<td>
+		<img alt="" src="images/m_nature05.jpg"
+			onmouseover="this.src='images/nature05.jpg'"
+			onmouseout="this.src='images/m_nature05.jpg'">
+	</td>
+	<td>
+		<img alt="" src="images/m_nature06.jpg"
+			onmouseover="this.src='images/nature06.jpg'"
+			onmouseout="this.src='images/m_nature06.jpg'">
+	</td>
+</tr>
+</table>
+
+
+<script type="text/javascript">
+
+
+//--------------------------------------------------------------
+</script>
+<br>
+<hr>
+<br>
+<!-- ------------------------------------------------------- -->
+<h1>다음 생일까지 남은 일수</h1>
+<br>다음 버튼을 클릭하여 생일을 입력하면,<br>
+다음 생일까지 남은 일 수를 볼 수 있습니다.
+<br><br>
+<button type="button" onclick="func()">생일 입력</button>
+<br><br>
+남은 일 수 : <h3 id="days"></h3>
+
+<script type="text/javascript">
+function func() {
+	//alert(); <- 출력
+	//prompt(); <- 입력 
+	let birthM = prompt("태어난 달을 입력해주세요(1 ~ 12)");
+	let birthD = prompt("태어난 날짜를 입력해주세요(1 ~ 31)");
+	
+	//현재 날짜와 비교
+	let nowday = new Date();	//현재 날짜
+	let birthday = new Date(); 	//생일 날짜
+	
+	//자신의 생일을 저장
+	birthday.setMonth(birthM - 1);
+	birthday.setDate(birthD);
+	
+	//				생일	날짜 				 현재 날짜
+	let mSecond = birthday.getTime() - nowday.getTime();
+	//mSecond가 "-" 일 경우 -> 생일이 지남.
+	if(mSecond <= 0) {
+		let birthY = birthday.getFullYear();
+		birthday.setFullYear(birthY + 1);
+		
+		mSecond = birthday.getTime() - nowday.getTime();
+	}
+	let days = mSecond / (24 * 60 * 60 * 1000);
+	
+	document.getElementById("days").innerHTML = days;
+}
+
+//--------------------------------------------------------------
+</script>
+<br>
+<hr>
+<br>
+</body>
+</html>

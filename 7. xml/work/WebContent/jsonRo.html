@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- 같은 json을 사용한 거 -->
+
+<div id="books">
+</div>
+
+<script type="text/javascript">
+
+let xhttp = new XMLHttpRequest();
+
+xhttp.onreadystatechange = function () {
+	if(this.readyState == 4 && this.status == 200) {
+		jsonFunc(this);
+	}
+}
+xhttp.open("GET", "book.json", true);
+xhttp.send();
+
+function jsonFunc( resp ) {
+	
+	let jsonDoc = resp.responseText;	//xml과의 차이점 확인
+	let arr = JSON.parse(jsonDoc);		//String을 Json으로
+	
+	let out = "<table border='1'>";
+	out += "<col width='70'><col width='230'><col width='140'><col width='100'>";
+	
+	// 컬럼 출력
+	out += "<tr>";
+	out += "<th>number</th>";
+	for (k in arr[0]) {	//k는 key, key값을 출력
+		out += "<th>" + k + "</th>";
+	}
+	out += "</tr>";
+	
+	// 데이터 출력
+	for (i = 0; i < arr.length; i++) {
+		out += "<tr>";
+		
+		//번호 출력
+		out += "<th>"+(i+1)+"</th>";
+		
+		/*
+		//데이터 출력1
+		out += "<td>" + arr[i].title +"</td>";
+		out += "<td>" + arr[i].author +"</td>";
+		out += "<td>" + arr[i].price +"</td>";
+		*/
+		//데이터 출력2
+		for (key in arr[i]) {
+			out += "<td>" + arr[i][key] +"</td>";
+		}
+		//컬럼이 많을경우 2번이 편하지만 1번이 가독성에선 좋음
+		
+		out += "</tr>";
+	}
+	
+	out += "</table>";
+	
+	document.getElementById("books").innerHTML = out;
+	
+}
+</script>
+
+<!-- 
+<p id="demo"></p>
+
+<script type="text/javascript">
+
+let xhttp = new XMLHttpRequest();
+
+xhttp.onreadystatechange = function () {
+	if(xhttp.readyState == 4 && xhttp.status == 200) {
+		jsonFunc( xhttp.responseText );
+	}
+}
+xhttp.open("GET", "book.json", true);
+xhttp.send();
+
+function jsonFunc( resp ) {
+	let arr = JSON.parse(resp);
+	
+	let txt = "";
+	
+	for (i = 0; i < arr.length; i++) {
+		txt += arr[i].title + " " +
+				arr[i].author + " " +
+				arr[i].price + "<br>";
+	}
+	document.getElementById("demo").innerHTML = txt;
+}
+</script>
+-->
+</body>
+</html>

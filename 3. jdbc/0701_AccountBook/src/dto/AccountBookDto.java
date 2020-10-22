@@ -1,0 +1,91 @@
+package dto;
+
+import java.io.Serializable;
+/*
+CREATE TABLE ACCOUNTBOOK(
+	SEQ NUMBER(8),
+	ID VARCHAR2(30),				-- 외래키
+	IO_KIND VARCHAR2(1),			-- 수입/지출(IN/OUT)
+	AMOUNT NUMBER(9),				-- 금액
+	CONTENT VARCHAR2(200),			-- 사용내역
+	WDATE DATE						-- 입력일 - 적은 날짜가 SYSDATE
+);
+ */
+import java.sql.Date;
+
+public class AccountBookDto implements Serializable {
+
+	// id나 accountbook에 필요한
+	private int seq;
+	private String id;
+	private String io_kind;
+	private int amount;
+	private String content;
+	private String wdate;
+	
+	public AccountBookDto(int seq, String id, String io_kind, int amount, String content, String wdate) {
+		super();
+		this.seq = seq;
+		this.id = id;
+		this.io_kind = io_kind;
+		this.amount = amount;
+		this.content = content;
+		this.wdate = wdate;
+	}
+
+	public int getSeq() {
+		return seq;
+	}
+
+	public void setSeq(int seq) {
+		this.seq = seq;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getIo_kind() {
+		return io_kind;
+	}
+
+	public void setIo_kind(String io_kind) {
+		this.io_kind = io_kind;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getWdate() {
+		return wdate;
+	}
+
+	public void setWdate(String wdate) {
+		this.wdate = wdate;
+	}
+
+	@Override
+	public String toString() {
+		return "AccountBookDto [seq=" + seq + ", id=" + id + ", io_kind=" + io_kind + ", amount=" + amount
+				+ ", content=" + content + ", wdate=" + wdate + "]";
+	}
+
+	
+}

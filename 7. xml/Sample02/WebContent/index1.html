@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<p id="demo"></p>
+
+<script type="text/javascript">
+
+let xhttp = new XMLHttpRequest();
+
+xhttp.onreadystatechange = function () {
+	if(xhttp.readyState == 4 && xhttp.status == 200) {
+		jsonFunc( xhttp.responseText );
+	}
+}
+xhttp.open("GET", "jsondata.json", true);
+xhttp.send();
+
+
+function jsonFunc( resp ) {
+//	alert('jsonFunc')
+//	alert( resp );
+
+	let arr = JSON.parse(resp);
+//	alert(arr);
+ 	alert(arr.length);
+
+	let txt = "";
+	/*
+	//ex
+	let array = [ 11, 22, 33 ];
+	for(i in arr) {
+		console.log(array[i]);
+	}
+	*/
+//-----------------------------------	
+	/*
+	//key와 value 둘 다 꺼내는 경우
+	for (i = 0; i < arr.length; i++) {
+		
+		for(key in arr[0]) {
+			
+			txt += key + ":" + arr[i][key];
+		}
+		txt += "<br>";
+	
+	}
+	document.getElementById("demo").innerHTML = txt;
+	*/
+//-----------------------------------
+	/*
+	//value만 꺼내는 경우
+	for (i = 0; i < arr.length; i++) {
+		txt += arr[i].name + " " +
+				arr[i].age + " " +
+				arr[i].address + " " +
+				arr[i].tel + "<br>";			
+	}
+	document.getElementById("demo").innerHTML = txt;	
+	*/	
+//-----------------------------------
+
+}
+
+</script>
+</body>
+</html>

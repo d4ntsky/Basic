@@ -1,0 +1,307 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import db.DBClose;
+import db.DBConnection;
+import dto.BbsDto;
+
+public class BbsDao {
+
+	private static BbsDao dao = new BbsDao();
+	
+	private BbsDao() {
+		
+	}
+	
+	public static BbsDao getInstance() {
+		return dao;
+	}
+//---------------------------------------------------------------------------	
+	public List<BbsDto> getBbsList() {
+		
+		String sql = " SELECT SEQ, ID, REF, STEP, DEPTH, "
+					+" TITLE, CONTENT, WDATE, "
+					+" DEL, READCOUNT "
+					+" FROM BBS "
+					+" ORDER BY REF DESC , STEP ASC ";
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		
+		List<BbsDto> list = new ArrayList<BbsDto>();
+		
+		try {
+			conn = DBConnection.getConnection();
+			System.out.println("1/6 getId success");
+			
+			psmt = conn.prepareStatement(sql);
+			System.out.println("2/6 getId success");
+			
+			rs = psmt.executeQuery();
+			System.out.println("3/6 getId success");
+			
+			while (rs.next()) {
+				int i = 1;
+				BbsDto dto = new BbsDto(rs.getInt(i++), 		//1
+										rs.getString(i++), 		//2
+										rs.getInt(i++), 
+										rs.getInt(i++),
+										rs.getInt(i++), 
+										rs.getString(i++),  
+										rs.getString(i++), 
+										rs.getString(i++), 
+										rs.getInt(i++), 
+										rs.getInt(i++));
+				
+				list.add(dto);
+			}
+			System.out.println("4/6 getId success");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, rs);
+		}
+		return list;
+	}
+//---------------------------------------------------------------------------	
+	
+	public boolean writeBbs(BbsDto dto) {
+		
+		String sql = " INSERT INTO BBS "
+					+" (SEQ, ID, REF, STEP, DEPTH, "
+					+" TITLE, CONTENT, WDATE, "
+					+" DEL, READCOUNT) "
+					+" VALUES( SEQ_BBS.NEXTVAL, ?, "
+					+" (SELECT NVL(MAX(REF), 0)+1 FROM BBS), 0, 0, " //REF SEQ_BBS.NEXTVAL을 못 넣음 처음 실행되기 때문에!! /REF는 SEQUENCE랑 같음
+					+" ?, ?, SYSDATE, "
+					+" 0, 0) ";
+		
+		
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		
+		int count = 0;
+		
+		try {
+			conn = DBConnection.getConnection();
+			System.out.println("1/6 writeBbs success");
+			
+			psmt = conn.prepareStatement(sql);
+			//ID, TITLE, CONTENT
+			psmt.setString(1, dto.getId());
+			psmt.setString(2, dto.getTitle());
+			psmt.setString(3, dto.getContent());
+			System.out.println("2/6 writeBbs success");
+			
+			count = psmt.executeUpdate();
+			System.out.println("3/6 writeBbs success");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, null);
+		}
+		return count>0?true:false;
+	}		
+//----------------------------------------------------------------------------------
+	public BbsDto getBbs(int seq) {
+		String sql = " SELECT SEQ, ID, REF, STEP, DEPTH, "
+				+ " TITLE, CONTENT, WDATE,"
+				+ " DEL, READCOUNT "
+				+ " FROM BBS "
+				+ " WHERE SEQ=? ";
+
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		
+		BbsDto dto = null;
+		
+		try {
+			conn = DBConnection.getConnection();
+			System.out.println("1/6 getBbs success");
+		
+			psmt = conn.prepareStatement(sql);
+			System.out.println("2/6 getBbs success");
+			
+			psmt.setInt(1, seq);
+			
+			rs = psmt.executeQuery();
+			System.out.println("3/6 getBbs success");
+			
+			if(rs.next()) {
+				int i = 1;
+				dto = new BbsDto(rs.getInt(i++), 
+								rs.getString(i++), 
+								rs.getInt(i++), 
+								rs.getInt(i++), 
+								rs.getInt(i++), 
+								rs.getString(i++), 
+								rs.getString(i++), 
+								rs.getString(i++), 
+								rs.getInt(i++), 
+								rs.getInt(i++));
+			}
+			System.out.println("4/6 getBbs success");
+			
+		} catch (Exception e) {
+			System.out.println("getBbs fail");
+			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, rs);			
+		}
+		return dto;
+	}
+//----------------------------------------------------------------------------------
+	
+	public void readcount(int seq) {
+		String sql = "  UPDATE BBS "
+				+ "	SET READCOUNT=READCOUNT+1 "
+				+ " WHERE SEQ=? ";
+	
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		
+		try {
+			conn = DBConnection.getConnection();
+			System.out.println("1/6 readcount success");
+				
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);			
+			System.out.println("2/6 readcount success");
+			
+			psmt.executeUpdate();
+			System.out.println("3/6 readcount success");
+			
+		} catch (Exception e) {
+			System.out.println("readcount fail");
+			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, null);			
+		}	
+	}
+	
+//----------------------------------------------------------------------------------
+	//req,step,depth
+	
+	public boolean answer(int seq, BbsDto bbs) {
+		
+		//update
+		String sql1 = " UPDATE BBS "
+					+ " SET STEP=STEP+1 "										//3 스탭을 늘려라
+					+ " WHERE REF = (SELECT REF FROM BBS WHERE SEQ=? ) "		//1.REF가 같은 것 중
+					+ "  AND STEP > (SELECT STEP FROM BBS WHERE SEQ=? ) ";		//2 현재 STEP보다 큰 스텝의
+		
+		//insert
+		String sql2 = " INSERT INTO BBS "
+					+ " (SEQ, ID, "
+					+ " REF, STEP, DEPTH, "
+					+ " TITLE, CONTENT, WDATE, DEL, READCOUNT) "
+					+ " VALUES(SEQ_BBS.NEXTVAL, ?, "					
+					+ " 	(SELECT REF FROM BBS WHERE SEQ=?), "
+					+ " 	(SELECT STEP FROM BBS WHERE SEQ=?) + 1, "	//+1
+					+ " 	(SELECT DEPTH FROM BBS WHERE SEQ=?) + 1, "	//+1
+					+ "		?, ?, SYSDATE, 0, 0) ";
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		
+		int count = 0;
+		
+		try {
+			conn = DBConnection.getConnection();
+			conn.setAutoCommit(false);				//확인
+			System.out.println("1/6 answer success");
+			
+			// update
+			psmt = conn.prepareStatement(sql1);
+			psmt.setInt(1, seq);
+			psmt.setInt(2, seq);
+			System.out.println("2/6 answer success");
+			
+			count = psmt.executeUpdate();
+			System.out.println("3/6 answer success");
+			
+			// psmt 초기화 - 두번째 쿼리문을 실행하기 위해 초기화해야한다
+			psmt.clearParameters();
+			
+			// insert
+			psmt = conn.prepareStatement(sql2);
+			psmt.setString(1, bbs.getId());
+			psmt.setInt(2, seq);
+			psmt.setInt(3, seq);
+			psmt.setInt(4, seq);
+			psmt.setString(5, bbs.getTitle());
+			psmt.setString(6, bbs.getContent());
+			System.out.println("4/6 answer success");
+			
+			count = psmt.executeUpdate();
+			System.out.println("5/6 answer success");
+			
+			conn.commit();	//db안에 
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		} finally {
+			try {
+				conn.setAutoCommit(true);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DBClose.close(psmt, conn, null);
+			System.out.println("6/6 answer success");
+		}
+		return count>0?true:false;
+	}
+	
+//----------------------------------------------------------------------------------
+	
+	/*
+	//버튼으로 삭제 기능 해놨던거.. 삭제가 아니고 링크를 끊어줘야한다. 그냥 날리면 db에 문제가 생긴다. del값만 바뀌게...? update
+	public boolean deleteBbs(int seq) {	//확인부분
+		
+		String sql = " DELETE FROM BBS "
+					+" WHERE SEQ=? ";
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		
+		int count = 0;
+		
+		try {
+			conn = DBConnection.getConnection();
+			System.out.println("1/6 deleteBbs success");
+			
+			psmt = conn.prepareStatement(sql);
+			System.out.println("2/6 deleteBbs success");
+			
+			psmt.setInt(1, seq);					//string?
+			
+			count = psmt.executeUpdate();
+			System.out.println("3/6 deleteBbs success");
+			
+			System.out.println("4/6 getSeq success");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, null);
+		}
+		return count>0?true:false;
+	}	
+	*/
+}

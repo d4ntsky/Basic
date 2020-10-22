@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+</head>
+<body>
+
+<!-- -----------------------------------------------------------------------------------------
+
+		Document Object Model
+		
+		Java Script : innerHTML, value
+		
+		JQuery : html() 
+				 text()
+				 css()
+				 attr()
+				 prop()
+				 
+				 setter 예시
+				 	css("background-color","#ff0000");
+				 	css( {  "background-color" : "#ff0000"
+				 		    "border"           : "3px solid"  } );
+				 		    
+				 getter 예시
+				 	let v = $("#id").css("background-color");
+				 	
+				 setter -> $(id, name, class, tag).val(값); 			<- input의 경우
+				 		   $(id, name, class, tag).css("특성명","값")	<- 일반
+				 getter -> let x = $(id, name, class, tag).val();
+				 		   let x = $(id, name, class, tag).css("특성명")
+				 		   
+------------------------------------------------------------------------------------------- -->
+ 
+<!-- 일반 Tag -->
+<p id="demo">글로벌 양대 테크 기업인 구글과 애플이 동시에 한 나라에 집중하고 있다. <b>바로 인도다</b>. 대형 시장으로 부상하는 인도에 최근 두 기업은 막대한 자금을 쏟아붓기로 결정했다.</p>
+<button type="button" id="btnText">show text</button>
+<button type="button" id="btnHtml">show html</button>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	$("#btnText").click(function() {
+		let text = $("#demo").text();
+		alert(text);
+	});
+
+	$("#btnHtml").on("click", function() {
+		let html = $("#demo").html();
+		alert(html);
+	});
+});
+</script>
+<br><hr><br>
+<!-- ------------------------------------------------------------------------------------ -->
+
+<input type="text" id="text" placeholder="입력주제">
+<button type="button" id="btnInput">show value</button>
+
+<script type="text/javascript">
+$(function () {
+	
+	$("#btnInput").click(function() {
+		let text = $("#text").val();
+		alert(text);
+	});
+});
+</script>
+<br><hr><br>
+<!-- ------------------------------------------------------------------------------------ -->
+
+<p>
+	<a href="http://www.naver.com" id="web">Naver Link</a>
+</p>
+<button type="button" id="btnAttr">Attribute(속성)</button>
+
+<script type="text/javascript">
+$(function name() {
+	$("#btnAttr").click(function() {
+		
+		//getter
+		let val = $("#web").attr("href");
+		alert(val);
+		
+		//setter
+		$("#web").attr("href", "http://www.google.com");
+		$("#web").text("구글 홈페이지");
+		
+	});
+});
+</script>
+<br><hr><br>
+<!-- ------------------------------------------------------------------------------------ -->
+</body>
+</html>

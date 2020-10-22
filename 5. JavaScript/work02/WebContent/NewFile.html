@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- ----------------------------------------------------------------- -->
+<h1>배경색의 변경</h1>
+다음 버튼을 클릭하면 홈페이지의 배경색을 변경할 수 있습니다<br><br>
+<button type="button" onclick="bgcl(0)">빨강</button>
+<button type="button" onclick="bgcl(1)">녹색</button>
+<button type="button" onclick="bgcl(2)">청색</button>
+<button type="button" onclick="bgcl(3)">주황색</button>
+<button type="button" onclick="bgcl(4)">검정색</button>
+<button type="button" onclick="bgcl(5)">흰색</button>
+
+<script type="text/javascript">
+function bgcl(num) {
+	if(num == 0){
+		document.bgColor = "red";
+	}else if(num == 1){
+		document.bgColor = "green";
+	}else if(num == 2){
+		document.bgColor = "blue";
+	}else if(num == 3){
+		document.bgColor = "orange";
+	}else if(num == 4){
+		document.bgColor = "black";
+	}else if(num == 5){
+		document.bgColor = "white";
+	}
+}
+
+//-------------------------------------------------------------------------
+</script>
+<br>
+<br>
+<hr>
+
+<!-- ----------------------------------------------------------------- -->
+<h1>(문제)</h1>
+영어 속담으로 "1일 1개씩 먹으면 의사가 필요없다" 라고 하는 과일은 무엇일까요?<br><br>
+<input type="checkbox" id="ck" onclick="lett()">영어(소문자)로 답한다<br><br>
+답 : <input type="text" id="fru" size="8">
+<button type="button" onclick="ans()">확인</button>	
+
+<script type="text/javascript">
+
+let sizle = document.getElementById("ck").value;
+//alert(sizle);
+let state = document.getElementById('ck').checked; //true or false
+//alert(state);
+
+/*
+function lett(){
+
+	if(state == true){
+		alert('대문자로 입력하셔야 정답입니다')
+
+	}else if(state == false){
+		alert('소문자로 입력하셔야 정답입니다')
+		
+	}
+}
+*/
+
+
+function ans() {
+	let dap = document.getElementById("fru").value;
+
+	if(dap == ''){
+		alert('값을 입력해주세요');
+	}else if(dap == 'apple'){
+		alert('정답입니다');
+	}else{
+		alert('다시 한 번 도전해주세요');
+	}
+}
+
+//-------------------------------------------------------------------------
+</script>
+<br>
+<br>
+<hr>
+
+<!-- ----------------------------------------------------------------- -->
+<h1>미술관 및 박물관의 링크</h1>
+<select id="lin" onchange="acce()">
+	<option value="">대상을 선택</option>
+	<option value="a">서울시립미술관</option>
+	<option value="b">국립현대미술관</option>
+	<option value="c">예술의 전당</option>
+	<option value="d">국립중앙박물관</option>
+	<option value="e">서울역사박물관</option>
+	<option value="f">국립민속박물관</option>
+</select>  
+<script type="text/javascript">
+function acce() {
+	let addr = document.getElementById('lin').value;
+	if(addr == "a"){ location.href = "http://sema.seoul.go.kr/"; }
+	else if(addr == "b"){ location.href = "http://www.mmca.go.kr/"; }
+	else if(addr == "c"){ location.href = "http://www.sac.or.kr/"; }
+	else if(addr == "d"){ location.href = "http://www.museum.go.kr/"; }
+	else if(addr == "e"){ location.href = "http://www.museum.seoul.kr/"; }
+	else if(addr == "f"){ location.href = "http://www.nfm.go.kr/"; }
+}
+
+//-------------------------------------------------------------------------
+</script>
+<br>
+<br>
+<hr>
+
+<!-- ----------------------------------------------------------------- -->
+<h1>2개의 주사위</h1>
+버튼을 클릭하면 2개의 주사위가 랜덤하게 나타난다
+<table>
+	<tr>
+		<td><span id="dice1"></span></td>
+		<td><span id="dice2"></span></td>
+	</tr>
+</table>
+<br><br>
+<button type="button" value="" onclick="rol()">주사위 굴리기</button>	
+
+<script type="text/javascript">
+function rol() {
+	let rand1 = parseInt((Math.random() * 6) + 1);
+	let rand2 = parseInt((Math.random() * 6) + 1);
+	document.getElementById('dice1').innerHTML 
+	= '<img src="images/sai_' +rand1+ '.gif">';
+	document.getElementById('dice2').innerHTML 
+	= '<img src="images/sai_' + rand2 + '.gif">';
+}
+//images/sai_1.gif
+
+//-------------------------------------------------------------------------
+</script>
+<br>
+<br>
+<hr>
+
+<!-- ----------------------------------------------------------------- -->
+<h1>환영합니다</h1>
+현재 시각은 <input type="text" id="text" size="50">입니다
+
+<script type="text/javascript">
+document.getElementById('text').innerHTML = Date();
+document.getElementById('text').value = Date();
+
+//-------------------------------------------------------------------------
+</script>
+<br>
+<br>
+<hr>
+
+<!-- ----------------------------------------------------------------- -->
+풍경사진 흰색 바탕
+이미지 위로 마우스를 이동하면 그 이미지가 컬러로 표시됩니다. 
+<table>
+	<tr>
+		<td>
+			<img src='images/tahiti01.jpg'>
+		</td>
+		<td>2</td>
+		<td>3</td>
+	</tr>
+	<tr>
+		<td>4</td>
+		<td>5</td>
+		<td>6</td>
+	</tr>
+</table>
+<script type="text/javascript">
+
+
+//-------------------------------------------------------------------------
+</script>
+<br>
+<br>
+<hr>
+
+<!-- ----------------------------------------------------------------- -->
+<h1>다음 생일까지 남은 일수</h1>
+다음 버튼을 클릭하여 생일을 입력하면<br>
+다음 생일까지 남은 일수를 볼 수 있습니다<br><br>
+<button type="button" value="" onclick="birthck()">생일을 입력</button>	
+
+<script type="text/javascript">
+//prompt 사용
+function birthck() {
+	let inputString = parseInt(prompt('당신의 생일을 입력해주세요', ''));
+	//생일에 대입하는 공식
+	inputString = 200709 - inputString;
+	//몇몇 일 남았습니다
+	alert(inputString);
+}
+
+//-------------------------------------------------------------------------
+</script>
+
+</body>
+</html>

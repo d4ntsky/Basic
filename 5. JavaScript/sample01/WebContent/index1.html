@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- 외부에서의 호출 -->
+<script type="text/javascript" src="myScript.js"></script>
+
+<!-- 헤더에서의 선언해 호출
+<script type="text/javascript">
+function func() {
+	alert("func() 호출")
+}
+</script>
+ -->
+
+</head>
+<body>
+
+<!-- <p id="demo" onclick="alert('p Tag 클릭')">여기가 p Tag</p> -->
+
+<p id="demo" onclick="func()">여기가 p Tag</p>
+
+
+<script type="text/javascript">	
+// function
+/*
+function func() {
+	alert("func() 호출")
+}
+*/
+</script>
+
+<script type="text/javascript">
+// 이 부분은 실행되지만 위에 있는 거와 같으므로 쓰지 않는 편이다.
+</script>
+
+</body>
+</html>

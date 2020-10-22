@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form action="" name="frm">
+	<div align="center">
+	<strong>라면 타이머</strong>
+	<br><br>
+	
+	<select id="selid" name="myChoice">
+		<option value="180">원하는 시간을 선택해주세요(기본시간:3분)</option>
+		<option value="300">5분</option>
+		<option value="180">3분</option>
+		<option value="150">2분30초</option>
+		<option value="120">2분</option>
+		<option value="60">1분</option>
+		<option value="30">30초</option>
+	</select>
+	
+	<input type="button" value="Start" onclick="noodle()">
+	<br><br>
+	
+	<span id="countdown">time selected</span>
+	<br><br>
+	
+	<button type="button" onclick="window.close()">close</button>
+	
+	</div>
+</form>
+
+<script type="text/javascript">
+let count = 0;
+let time = 0;
+let choice = 0;
+
+function noodle() {
+	clearInterval(time);	// 타이머 초기화 timer initialized 
+	
+	
+	// 시간 선택 취득1
+	
+	let value = document.getElementById('selid').value;
+	//alert(value); //확인용
+	
+	count = value;
+	
+	// 시간 선택 취득2
+	/*
+	choice = document.frm.myChoice.selectedIndex; //0 ~ n-1
+	
+	count = parseInt( document.frm.myChoice.options[choice].value );
+	*/
+	//-----------------------
+	time = setInterval('myTimer()', 1000); //초당 한 번씩 빼는
+}
+
+function myTimer() {	//내부 호출용
+	count = count - 1 ;
+	
+	document.getElementById('countdown').innerHTML 
+		= "완료까지 <b>" + count + "</b>초 남았습니다";
+	
+	if(count == 0){
+		clearInterval(time);
+		alert('시간이 완료 되었습니다.');
+	}
+}
+
+//cf) 이 모음을 따로 만들어두는?
+		
+</script>
+
+
+</body>
+</html>

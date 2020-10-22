@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- 텍스트 파일로 작성한 xml 불러오기 -->
+
+<p id="demo"></p>
+
+<script type="text/javascript">
+
+let xmltext = "<bookstore>" + 		/* root */
+					"<book>" +		/* node */
+						"<title>탈무드</title>" +
+						"<author>man</author>" +
+						"<year>2001</year>" +
+					"</book>" +
+					"<book>" +		/* node */
+						"<title>이솝이야기</title>" +
+						"<author>woman</author>" +
+						"<year>2004</year>" +
+					"</book>" +
+			  "</bookstore>";
+
+let parser, xmlDoc;
+
+parser = new DOMParser();
+xmlDoc = parser.parseFromString(xmltext, "text/html");//최종본이 나오는
+
+document.getElementById('demo').innerHTML
+//	= xmlDoc.getElementsByTagName("book")[0].childNodes[0].nodeName; //title
+								   /*첫번째 book.title*/
+//	= xmlDoc.getElementsByTagName("book")[0].childNodes[1].nodeName; //author
+								   /*첫번째 book.author*/
+//	= xmlDoc.getElementsByTagName("book")[0].childNodes[0].childNodes[0].nodeValue;//탈무드
+								   /*첫번째 book.title.첫번째 번지를*/
+//	= xmlDoc.getElementsByTagName("book").length;	//2 = book이 두 권
+	= xmlDoc.getElementsByTagName("book")[0].childNodes.length;	//3 = title,author,year
+
+</script>
+
+</body>
+</html>

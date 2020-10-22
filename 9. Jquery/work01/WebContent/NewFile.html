@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+</head>
+<body>
+
+<!-- --------------------------------------------------------------- -->
+<h1>JQuery 소재의 지정(태그 명)</h1>
+<h3>Photo Library</h3>
+<img id="pho" alt="" src="./image/b_pic2.jpg">
+<br>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	$('#pho').mouseover(function() {
+		$(this).css("border","solid 3px blue");
+	});
+	$('#pho').mouseout(function() {
+		$(this).css("border","");
+	});
+});
+//----------------------------------------------------------------------
+</script>
+<br><hr><br>
+
+<!-- --------------------------------------------------------------- -->
+<h1>Event 처리</h1>
+<p>클릭시에 다음과 같이 라인이 만들어지도록 하라</p>
+<h3>Life on the water</h3>
+<img class="phot" alt="" src="./image/photo_3.jpg">
+<img class="phot" alt="" src="./image/photo_4.jpg">
+<br>
+<img class="phot" alt="" src="./image/photo_5.jpg">
+<img class="phot" alt="" src="./image/photo_6.jpg">
+<br>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	/*
+	$('.phot').mouseover(function() {
+		$(this).css("border","solid 2px red");
+	});
+	$('.phot').mouseout(function() {
+		$(this).css("border","");
+	});
+	*/
+	$('.phot').click(function() {
+		$(this).css("border","solid 2px red");
+	});
+});
+//----------------------------------------------------------------------
+</script>
+<br><hr><br>
+
+<!-- --------------------------------------------------------------- -->
+<h1>JQuery 소재의 지정(복수 조건)</h1>
+<pre>
+마우스가 태그 위치에 있을 때 다음과 같이 배경색을 변경하시오
+태그는 원하는 태그로 사용
+</pre>
+<h3>TOPICS</h3>
+<p class="tpc">2015/02/15<br>2015시즌 1차전의 결과를 공개했다.</p>
+<p class="tpc">2015/01/10<br>2015시즌 최종전의 결과를 공개했다.</p>
+<p class="tpc">2014/12/20<br>2014시즌 연간 일정을 발표했다.<br>다음 시즌은 10개 지역에서 총 12경기를 예정.</p>
+<p class="tpc">2014/12/15<br>2014시즌 10차전의 결과를 공개했다.</p>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	$('.tpc').mouseover(function() {
+		$(this).css("background","#ffff00");
+	});
+	$('.tpc').mouseout(function() {
+		$(this).css("background","#ffffff");
+	});
+});
+//----------------------------------------------------------------------
+</script>
+<br><hr><br>
+
+<!-- --------------------------------------------------------------- -->
+<h1>JQuery 소재의 지정</h1>
+<p>다음과 같이 출력이 되도록 JQeury로 작성하라</p>
+<h3>~요금~</h3>
+
+<table border="1">
+	<tr>
+		<th>유형</th><th>정원</th><th>화장실</th><th>목욕탕</th><th>1박 요금</th>
+	</tr>
+	<tr>
+		<td>A타입</td><td>15명</td><td>유</td><td>유</td><td>28,000원</td>
+	</tr>
+	<tr>
+		<td>B타입</td><td>12명</td><td>유</td><td>유</td><td>25,000원</td>
+	</tr>
+	<tr>
+		<td>C타입</td><td>10명</td><td>유</td><td>무</td><td>21,000원</td>
+	</tr>
+	<tr>
+		<td>D타입</td><td>8명</td><td>유</td><td>무</td><td>19,500원</td>
+	</tr>
+	<tr>
+		<td>E타입</td><td>6명</td><td>무</td><td>무</td><td>17,000원</td>
+	</tr>
+	<tr>
+		<td>F타입</td><td>4명</td><td></td><td>무</td><td>15,000원</td>
+	</tr>
+</table>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$('tr').mouseover(function() {
+		$(this).css("background-color","olive");
+	});
+	$('tr').mouseout(function() {
+		$(this).css("background","#ffffff");
+	});
+});
+//----------------------------------------------------------------------
+</script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+</script>
+
+</head>
+<body>
+<!-- on이 붙은 거는 handler
+---------------------------------------------------------------스크립트 외부 -->
+
+<p id="demo">p tag id demo</p>
+
+<!-- id는 하나만 인식 되기 때문에 아래 꺼는 작동 안함 -->
+<p id="demo">p tag id demo</p>
+
+<input type="button" value="input 버튼" onclick="btnFunc1(1)">
+<br><br>
+
+<button type="button" onclick="btnFunc1(2)">button버튼</button>
+<br><br>
+
+<button type="button" onclick="btnclick()">버튼</button>
+
+<script type="text/javascript">
+//--------------------------------------------------------------------스크립트 내부
+func();
+/*
+(function func() {
+	console.log('func() 호출');
+})();	//이것도 되긴 하지만 
+*/
+function func() {
+	alert('func() 호출');
+}		//이 걸 선호
+
+
+function btnFunc() {
+	alert('button click');
+}
+
+function btnFunc1( num ){
+	let name;
+	if(num == 1){
+		name = 'input tag button';
+	}else{
+		name = 'button tag';
+	}
+	alert( name );
+
+	document.getElementById('demo').innerHTML = name;	//값 집어넣기 //확인
+}
+
+// int sum(int x, int y){ return x + y; }
+function sum(x, y) {
+	return x + y; 
+}
+//       click()은 예약어
+function btnclick() {
+	document.getElementById('demo').innerHTML = sum(2, 3);
+}	// 문서에 값을 가져오거나 올리기위한
+
+
+</script>
+
+</body>
+</html>

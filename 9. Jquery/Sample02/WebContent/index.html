@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+</head>
+<body>
+
+<p>pTag</p>
+
+<div>
+
+	<p>pTag 1 in div</p>
+	
+	<p>pTag 2 in div</p>
+	
+	<p class="cls">pTag Class = cls in div</p>
+	
+	<h3 class="cls">h3Tag Class = cls in div</h3>
+	
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	/*
+	$("p").click(function () {
+		alert('p tag click');
+	});
+	*/
+	/*
+	$("div p").click(function () {
+		alert('p tag in div click');
+	});
+	*/
+	/*
+	$("div .cls").click(function () {
+		alert('class cls in div click');
+	});
+	*/
+	/*
+	$("div p.cls").click(function () {
+		alert('pTag class cls in div click');
+	});
+	$("div h3.cls").click(function () {
+		alert('h3Tag class cls in div click');
+	});
+	*/
+	/*
+	$('.cls').click(function () {
+	//	alert('cls click');
+		//클릭하면 둘다 표시
+		//$('.cls').css("background", '#ffff00');
+		//클릭하면 각각 표시 가능
+		$(this).css("background", '#ffff00');// 똑같은 class인 경우 각각 처리하려면 this
+	});
+	*/
+	
+	$("p").click(function() {
+	//	$("p").hide();	//감추기 <-> show();
+		//클릭된 것만 숨기기
+		$(this).hide();
+	});
+	
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<p id="demo"></p>
+<br>
+<input type="text" id="id">
+<button type="button">click</button>
+
+<script type="text/javascript">
+$(function () {
+	
+	$("button").click(function() {
+	
+		$.ajax({
+			
+			url: "custuser",
+			type: "get",
+			datatype: "json",
+		//	data:"id=abc&pwd=123",
+		//	data: {id:"abc", pwd:"123"},
+			data: {id:$('#id').val(), pwd:"123"},
+			success: function ( json ) {
+			//	alert("success");
+			//1	alert( json.str );
+			//2	alert( json.map.title );
+			//3
+				let custlist = json.map.custlist;
+				alert( custlist[0].id + " " + custlist[0].name);
+			
+			},
+			error: function () {
+				alert("error");
+			}
+		
+		});
+	});
+});
+</script>
+
+</body>
+</html>

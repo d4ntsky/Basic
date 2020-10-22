@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- 데이터를 가져오는 과정 만들기 -->
+<p id="demo">p tag</p><!-- 초기값 -->
+
+<button type="button" onclick="loadXMLDoc()">내용변경</button>
+
+<script type="text/javascript">
+
+let xhttp = new XMLHttpRequest(); 		//xml파일을 읽어오는 목적
+						//request - get방식/post방식 두가지
+function loadXMLDoc() {
+	
+	xhttp.onreadystatechange = function () {
+		
+		//console.log( this.responseText )//this는 xhttp
+							//호출 시점 확인했을때 맨 나중
+		//console.log( this.readyState );
+/*
+	readyState : 진행 상태
+	0 -> open() 메소드를 수행하기 전
+	1 -> loading 중...
+	2 -> loading 완료
+	3 -> Server 처리중
+	4 -> Server 처리 완료 (모든 처리가 끝났을때)
+ */		
+ 		//console.log( this.status );
+/*
+	status		: 요소
+	200	-> 성공
+	403 -> 접근 금지 cf)readonly,writeonly
+	404 -> 없음 		(자주 볼 것)
+			예) test를 test1로 바꿀 시
+	500 -> 구문 에러	(자주 볼 것)
+ */
+ 		if(this.readyState == 4 && this.status == 200) {
+ 			document.getElementById('demo').innerHTML = this.responseText;
+ 		}
+	}
+	xhttp.open("GET", "check.txt", true);//async 비동기
+		console.log("xhttp.open");//호출 시점 확인
+	xhttp.send();
+		console.log("xhttp.send");//호출 시점 확인
+}
+
+</script>
+
+</body>
+</html>

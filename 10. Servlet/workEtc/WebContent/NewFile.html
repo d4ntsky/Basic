@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- ------------------------------------------------------------------------------------- -->
+<h1> 송부 정보의 입력 </h1>
+
+
+<form action="frm" method="get">
+	<pre>
+	이     름	:  <input type="text" name="name">
+
+	우편번호	:  <input type="text" name="adrNum1">-<input type="text" name="adrNum2"> <button type="button">주소 변환</button>
+
+	주     소	:  <input type="text" name="address">
+
+	전화번호	:  <input type="text" name="tele1">-<input type="text" name="tele2">-<input type="text" name="tele3">
+
+	배달시간	:  <select name="chotime">
+					<option>지정하지 않음</option>
+					<option>10:00 ~ 12:00</option>
+					<option>12:00 ~ 15:00</option>
+					<option>15:00 ~ 17:00</option>
+					<option>17:00 ~ 20:00</option>
+				</select>
+
+	영수증 요청	:  <input type="checkbox" name="rece">
+
+	매거진 수신	:  <input type="radio" name="email" value="신청"> 신청 <input type="radio" name="email" value="미신청"> 신청하지 않음
+
+	<input type="submit" value="확인 화면으로 진행">
+	</pre>
+</form>
+<script type="text/javascript">
+/*
+	name 값으로!!!!!!!!!!!!!!
+*/
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+</head>
+<body>
+
+<p>pTag</p>
+
+<p id="demo">pTag id demo</p>
+
+<p class="cls">pTag class cls</p>
+
+<p name="nam">pTag name nam</p>
+
+<button type="button" id="btn">button</button>
+<!-- 버튼은 class로 잡지 않는 편 / 목적성이 다름-->
+
+<script type="text/javascript">
+$(document).ready(function() {
+	//document를 다 읽고 들어오라는 뜻
+	
+	$("p").click(function() {
+		console.log( $(this).text() );
+	});
+	
+	$("#btn").on("click", function () {
+	//	$('p').hide();				//모든 p tag 지우기
+	//	$('*').hide();				//전체 지우기
+	//	$('p#demo').hide();			//id는 하나인 편이라 #demo가 낫다.
+	//	$('p.cls').hide();			//class는 여러가 쓰이기 때문에 가능성 있다.	
+	//	$('p[name=nam]').hide();	//p tag에선 name 잘 안 씀 cf)textArea 같은데
+	});
+});
+
+//cf) 이렇게 잡으면 처음으로 실행된다.
+(function func( ) { } ) ();
+</script>
+
+</body>
+</html>

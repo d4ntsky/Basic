@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<!-- 
+	저장 공간
+	login 정보 -> id(String), login정보(Object:id,name,(pwd) -> DTO)
+	
+	cookie	:	Client 공간에 저장. String
+				ex) id, password, 방문 횟수
+					Java Script에서 접근이 가능 / 문자열
+					
+	session	:	Server 공간에 저장. Object cf) 보안에 취약
+				ex) 저장 기한 설정, 방문 횟수, MemberDto
+				한글 사용 금지!!
+				
+	request.setAttribute(	,	)	-	1회성
+	Object obj = request.getAttribute()			
+	forward
+	
+	session.setAttribute(	,	)	-	급한 데이터는 보내주면 좋은...
+	Object obj = session.getAttribute()	
+	forward
+	
+	개발자도구에서 application에서 확인 가능
+ -->
+ 
+<a href="hello">hello Servlet</a>
+
+</body>
+</html>

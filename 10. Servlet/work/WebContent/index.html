@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<!-- 
+----------------------------------------------index.html
+이름 text
+나이 select
+종류 radio
+성격 checkbox
+----------------------------------------------HelloServlet
+-- 고양이 사이트로 이동
+이름 나이 성격 -> Dto -> session에 담기
+sendRedirect로 이동
+
+-- 강아지 사이트로 이동
+이름 나이 성격 -> Dto -> 
+request.setAttribute
+forward
+
+----------------------------------------------정보 출력 web
+-------------------------catServlet
+-------------------------dogServlet
+ -->
+<form id="frm">
+이름: <input type="text" name="name" id="_name">
+<br>
+나이: <select name="age" id="_age">
+		<option>선택</option>
+		<option>0~2살</option>
+		<option>2~4살</option>
+		<option>4~6살</option>
+		<option>6~8살</option>
+		<option>그외</option>
+	</select>
+<br>
+종류: 
+
+<input type="radio" value="cat" name="animal" class="ani" checked="checked" >고양이
+<input type="radio" value="dog" name="animal" class="ani" >강아지 
+
+<br>
+성격: 
+<input type="checkbox" value="자신감" class="ccharac" name="mood">자신감
+<input type="checkbox" value="소심함" class="ccharac" name="mood">소심함
+<input type="checkbox" value="독립적" class="ccharac" name="mood">독립적
+<input type="checkbox" value="긍정적" class="ccharac" name="mood">긍정적
+<input type="checkbox" value="그외" class="ccharac" name="mood">그외
+</form>
+<br><br>
+
+<button type="button" id="btn">제출</button>
+
+<script type="text/javascript">
+$(document).ready(function() {
+//alert($(".ani").val());
+	/*
+	$(document).on("$('#btn').click", function() {
+
+		if( $("#_name").val() == '' ) {
+			alert("이름을 입력 해주세요");
+			$("#_name").focus();
+		}
+		else if( $("#_age").val() == '선택' ) {
+			alert("나이를 선택 해주세요");
+			$("#_age").focus();
+		}
+		else if( $(".ccharac").is(":checked") == false ) {
+			alert("성격를 선택 해주세요");
+			$(".ccharac").focus();
+		}
+		else {
+			
+		}
+	});
+	*/
+	//let go = document.getElementById("anim").innerHTML;
+	//let go = document.getElementsByClassName("ani").check;
+	//alert(go);
+	
+	
+	$("#btn").click(function() {
+	
+		if( $("#_name").val() == '' ) {
+			alert("이름을 입력 해주세요");
+			$("#_name").focus();
+		}
+		else if( $("#_age").val() == '선택' ) {
+			alert("나이를 선택 해주세요");
+			$("#_age").focus();
+		}
+		else if( $(".ccharac").is(":checked") == false ) {
+			alert("성격를 선택 해주세요");
+			$(".ccharac").focus();
+		}
+		//하나만 선택하게 하기
+		else if( $(".ccharac").is(":checked") == false ) {
+			alert("성격를 선택 해주세요");
+			$(".ccharac").focus();
+		}
+		//
+		else {
+			let go = document.querySelector('input[name="animal"]:checked').value;
+			let fr = $("#frm");
+			//alert(go);
+			if(go == "dog") {	//강아지	
+				fr.attr({"method":"post","action":"hello"})
+				fr.submit();
+			}
+			else  {				//고양이
+				fr.attr({"method":"get","action":"hello"})
+				fr.submit();
+			} 
+			
+		}
+	});
+});
+</script>
+</body>
+</html>

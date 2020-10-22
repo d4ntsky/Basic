@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<img alt="" src="image/tahiti/tahiti01.jpg" onclick="alert('타히티 사진입니다')">
+<br>
+<hr>
+
+<img alt="" src="image/tahiti/tahiti01.jpg" onclick="func()">
+<br>
+<hr>
+<input type="text" id="id" value="">
+<br>
+<hr>
+<!-- -------------------------------------------------------------------- -->
+
+<h3>한국에서 제일 높은 산은?</h3>
+답: <input type="text" id="answer">
+<input type ="button" onclick="func2()" value="정답">
+<br>
+<hr>
+<!-- -------------------------------------------------------------------- -->
+
+<h3>변수 연산</h3>
+a,b에 대해 변수 a와 b의 계산 결과 표시
+<br><br>
+<button type="button" onclick="plus()">덧셈</button>
+<button type="button" onclick="minus()">뺄셈</button>
+<button type="button" onclick="multi()">곱셈</button>
+<button type="button" onclick="div()">나눗셈</button>
+<button type="button" onclick="rest()">나머지</button>
+<br><br>
+
+a: <input type="text" id="a" size="2">
+<input style="border:none" type="text" id="oper" size="2">
+b: <input type="text" id="b" size="2">
+ = <input type="text" id="result" size="5">
+<br>
+<hr>
+<!-- -------------------------------------------------------------------- -->
+<h1>체육관 이용 요금</h1>
+기본 사용료(4시간) 40,800원
+<br><br>
+
+<input type="checkbox" onclick="sum(0)" id="ch1" value="20000">야간조명(20,000원)
+<br>
+<input type="checkbox" onclick="sum(1)" id="ch2" value="4000">배구네트x2장(4,000))
+<br>
+<input type="checkbox" onclick="sum(2)" id="ch3" value="5000">배구공x10(5,000원)
+<br>
+<br>
+합계금액: <input type="text" id="t1" value="40800"> 원정
+<br>
+<hr>
+<!-- -------------------------------------------------------------------- -->
+
+
+
+
+<!-- -------------------------------------------------------------------- -->
+<script type="text/javascript">
+
+function func() {
+	alert('타히티 사진입니다');
+	
+	let obj = document.getElementById("id");
+	
+	obj.value = '타히티 사진입니다';
+}
+//------------------------------------------------------------
+function func2() {
+	let answer = document.getElementById('answer').value;
+	
+	if(answer == ''){
+		alert('기입 해주세요');	
+	}else if (answer == "한라산") {
+		alert('정답');
+	}else {
+		alert('정답 아님');
+	}
+}
+//------------------------------------------------------------
+let a, b; // 글로벌 변수 - 변수 연산 꺼
+
+function getValue() {
+	a = parseInt(document.getElementById("a").value);
+	b = parseInt(document.getElementById("b").value);
+}
+function plus() {
+	getValue();
+	document.getElementById('oper').value = "+";
+	document.getElementById("result").value = a + b ;
+}
+function minus() {
+	getValue();
+	document.getElementById('oper').value = "-";
+	document.getElementById("result").value = a - b ;
+}
+function multi() {
+	getValue();
+	document.getElementById('oper').value = "x";
+	document.getElementById("result").value = a * b ;
+}
+function div() {
+	getValue();
+	if(b == 0){
+		alert('계산할 수 없습니다. 다시 기입해주세요');
+		return;
+	}
+	document.getElementById('oper').value = "/";
+	document.getElementById("result").value = a / b ;
+}
+function rest() {
+	getValue();
+	if(b == 0){
+		alert('계산할 수 없습니다. 다시 기입해주세요');
+		return;
+	}
+	document.getElementById('oper').value = "%";
+	document.getElementById("result").value = a % b ;
+}
+//------------------------------------------------------------
+
+let total = parseInt (document.getElementById('t1').value);	//글로벌 변수
+		
+function sum(num) {
+//	let value = document.getElementById("ch1").value; //20000
+//	alert(value);
+//	let state = document.getElementById('ch1').checked; //true or false
+//	alert(state);
+	
+	/*1
+	if(num == 0){
+		let ch1 = document.getElementById('ch1').checked; 
+		let value = parseInt(document.getElementById("ch1").value);
+			if(ch1 == true){
+				total = total + value;
+			}else{
+				total = total - value;
+			}
+			document.getElementById('t1').value = total;
+	}
+	else if(num == 1){
+		let ch1 = document.getElementById('ch1').checked; 
+		let value = parseInt(document.getElementById("ch1").value);
+			if(ch1 == true){
+				total = total + value;
+			}else{
+				total = total - value;
+			}
+			document.getElementById('t1').value = total;
+	}
+	else if(num == 2){
+		let ch1 = document.getElementById('ch1').checked; 
+		let value = parseInt(document.getElementById("ch1").value);
+			if(ch1 == true){
+				total = total + value;
+			}else{
+				total = total - value;
+			}
+			document.getElementById('t1').value = total;
+	}*/
+	
+	
+	let checkboxId;
+	if(num == 0){
+		checkboxId = 'ch1';
+	}
+	else if(num == 1){
+		checkboxId = 'ch2';
+	}
+	else if(num == 2){
+		checkboxId = 'ch3';
+	}
+	
+	//alert(checkboxId);
+	let ch1 = document.getElementById(checkboxId).checked; 
+	let value = parseInt(document.getElementById(checkboxId).value);
+		if(ch1 == true){
+			total = total + value;
+		}else{
+			total = total - value;
+		}
+		document.getElementById('t1').value = total;
+	
+	
+}		
+//------------------------------------------------------------	
+	
+
+</script>
+
+</body>
+</html>

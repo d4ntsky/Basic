@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- 
+	table : 게시판에 사용
+	row(행)		홍/길동/24
+	column(열)	홍/일/성
+ -->
+ 
+<div align="center">
+<table border="1">
+ 		<col width ="50"><col width ="100"><col width ="200"><col width ="50">
+<!--  <table border="2" style="width: 100%"> -->
+	<tr>
+ 		<th>번호</th><th align="center">성</th><th>이름</th><th>나이</th>
+ 	<tr>
+		<th>1</th><td align="center">홍</td><td>길동</td><td>24</td> 
+ 	</tr>
+ 	<tr>
+		<th>2</th><td align="center">일</td><td>지매</td><td>21</td> 
+ 	</tr>
+ 	 <tr>
+		<th>3</th><td align="center">성</td><td>춘향</td><td>23</td> 
+ 	</tr>
+ 	 <tr>
+		<th>4</th><td align="center">임</td><td>꺽정</td><td>30</td> 
+ 	</tr>
+ </table>
+</div>
+
+<br>
+
+<table border="1" style="width : 50%">
+	<tr>
+		<th>성</th>
+		<th>이름</th>
+		<th>나이</th>
+		<th colspan="3">전화번호</th>
+		<!-- <th>전화번호</th> -->
+		<!-- <th>전화번호</th> -->
+	</tr>
+	<tr>
+		<td>홍</td>
+		<td>길동</td>
+		<td>24</td>
+		<td>123-4567</td>
+		<td>987-6543</td>
+		<td>555-5555</td>
+	</tr>
+</table>
+
+<br>
+
+<div align="right">
+<table border="1">
+	<caption>주소록</caption>	<!-- 새로 생긴 기능 -->
+	<tr>
+		<th>번호</th>
+		<td>1</td>
+	</tr>
+	<tr>
+		<th>성</th>
+		<td>홍</td>
+	</tr>
+	<tr>
+		<th>이름</th>
+		<td>길동</td>
+	</tr>
+	<tr>
+		<th rowspan="2">전화번호</th>
+		<td>123-4567</td>
+	</tr>
+	<tr>
+		<!-- <th>전화번호</th> -->
+		<td>987-6543</td>
+	</tr>
+</table>
+</div>
+
+
+
+</body>
+<!-- cf) -->
+</html>

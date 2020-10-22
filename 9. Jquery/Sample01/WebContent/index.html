@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+//API = Application Programming Interface				//버젼 확인
+														//소스코드 구하면
+														//버젼 맞춰주고 테스트
+//구글													//동작 안한다.
+</script>
+
+
+<!-- 
+<script src="https://code.jquery.com/jquery-3.5.1.min.js">
+//jquery 사이트
+</script>
+-->
+
+<!--
+<script type="text/javascript" src="./JQuery/jquery.min.js">
+//파일로 가져가기
+</script>
+-->
+ 
+ 
+</head>
+<body>
+
+<!-- 
+	Java Script : client(front)
+					화면의 resource와 값을 결정, 취득하는 부분을 처리.
+					DOM (getElementById, nodeList)
+					Vue, React
+					
+	CSS (Cascading Style Sheet) : 디자인, front 
+	
+	JQuery : Java Script 경량화, 간략화    cf) JavaScript로 만들어짐
+			Ajax (비동기 통신)
+			
+	JQuery-UI : Resource 중 button, textField, Slide
+-->
+
+<script type="text/javascript">
+/*
+	$( 태그 or id or class or name ).핸들러함수(매개변수)
+	
+	getter, setter 형식이 있다
+	
+	핸들러함수의 예
+	html()	<-	[h3 tag		->	innerHTML]	<b>world</b>
+	text()
+	val()	<-	[input text	->	value]
+*/
+
+
+</script>
+<!-- ------------------------------------------------------------ -->
+
+<p>여기가 p tag입니다</p>
+
+<p id="demo">p tag id = demo</p>
+
+<p class="cls">p tag class = cls</p>
+
+<h3 class="cls">h3 tag class = cls</h3>
+
+<!-- ------------------------------------------------------------ -->
+<script type="text/javascript">
+/*
+// Java Script로 tag에 내용 넣기
+let arrP = document.getElementsByTagName("p");
+
+for (i = 0; i < arrP.length; i++) {
+	arrP[i].innerHTML = "change p tag text";
+}
+*/
+//==============================================================
+//JQuery
+//$(document).ready(	function() {	}	);
+//다른 function을 만들고 호출해도 됨
+$(document).ready(	function() {
+//	alert('document ready');
+	
+	/*
+	//setter	-	매개변수 있음
+	$("p").html("jquery change name");	//innerHTML
+	// pTag의 html영역 값을 변경(setter)해라
+	$("p").html("<b>Hello p tag</b>");
+	
+	$("p").text("jquery change name");
+	$("p").text("<b>jquery change name</b>");
+	//document.getElementsByTagName("p").innerHTML = "<b>jquery change name</b>";
+	*/
+	
+	//getter	-	매개변수 없음
+	let value = $("p").text();
+//	alert(value);
+
+	//id 	-> # 
+	$("#demo").text("change text");		//setter
+	console.log( $("#demo").html() );	//getter
+
+	//class -> .
+	$(".cls").html("<b>hello cls class</b>");
+	
+});
+
+
+</script>
+
+</body>
+</html>

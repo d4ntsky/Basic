@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<p id="demo"></p>
+
+<script type="text/javascript">
+let param2 = {
+	    "quiz": {
+	        "sport": {
+	            "q1": {
+	                "question": "Which one is correct team name in NBA?",	//----1
+	                "options": [
+	                    "New York Bulls",
+	                    "Los Angeles Kings",
+	                    "Golden State Warriros",							//----2
+	                    "Huston Rocket"
+	                ],
+	                "answer": "Huston Rocket"
+	            }
+	        },
+	        "maths": {
+	            "q1": {
+	                "question": "5 + 7 = ?",								//----3
+	                "options": [
+	                    "10",
+	                    "11",												//----4
+	                    "12",
+	                    "13"
+	                ],
+	                "answer": "12"
+	            },
+	            "q2": {
+	                "question": "12 - 8 = ?",
+	                "options": [
+	                    "1",
+	                    "2",
+	                    "3",
+	                    "4"
+	                ],
+	                "answer": "4"
+	            }
+	        }
+	    }  /* /quiz */
+	}
+																//키 값 형식이 조금 다른
+function jsonTest() {
+	
+	document.getElementById("demo").innerHTML 
+//	= param2.quiz["sport"].q1.question;		//1 //question
+//	= param2.quiz["sport"].q1.options[2];	//2 //options[2]
+//	= param2.quiz["maths"].q1.question;		//3 //question	
+	= param2.quiz["maths"].q1.options[1];	//4 //options[1]
+	
+}
+
+jsonTest();
+
+</script>
+</body>
+</html>
